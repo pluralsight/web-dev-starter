@@ -1,17 +1,20 @@
+/**This productId in function scope, goes out of exsistance as soon as the function fix is done executing.
+ * 
+ */
 
-const button = document.getElementById('see-review');
-
-button.addEventListener('click', function() {
+function showProductId() {
+    // this productId comes back as soon as fix is completed execution.
+    let productId = 12345;
     
-    const review = document.getElementById('review');
-
-    if (review.classList.contains('d-none')) {
-        review.classList.remove('d-none');
-        button.textContent = 'CLOSE REVIEW';
-    } else {
-        review.classList.add('d-none');
-        button.textContent = 'SEE REVIEW';
+    function fix() {
+        let productId = 45678;
+        console.log('in fix: ', productId);
     }
 
-});
+    fix();
 
+    console.log('in showProductId: ', productId);
+
+}
+
+showProductId();
