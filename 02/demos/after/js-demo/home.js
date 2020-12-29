@@ -8,7 +8,7 @@ let person = {
 };
 
 
-showMessage(person.first_collection && person.vizcaya_collection);
+showMessage(person.first_collection + person.vizcaya_collection);
 
 
 
