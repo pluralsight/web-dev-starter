@@ -1,15 +1,17 @@
-// the person collection uses the person Type object in JavaScript...
-/*Defining the vizcaya collection objects 
-for sale in the 2021 catalog. */
-let person = {
-    first_collection: 'Vizcaya ',
-    vizcaya_collection: ' Entire Collection',
 
-};
+const button = document.getElementById('see-review');
 
+button.addEventListener('click', function() {
+    
+    const review = document.getElementById('review');
 
-showMessage(person.first_collection + person.vizcaya_collection);
+    if (review.classList.contains('d-none')) {
+        review.classList.remove('d-none');
+        button.textContent = 'CLOSE REVIEW';
+    } else {
+        review.classList.add('d-none');
+        button.textContent = 'SEE REVIEW';
+    }
 
-
-
+});
 
