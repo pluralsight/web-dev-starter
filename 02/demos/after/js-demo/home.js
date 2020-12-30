@@ -12,6 +12,8 @@ let discount = 1.3;
 let tax = 0.7;
 let standard = 3.1;
 
+// setting up ...
+Array[product, price, discount, tax, standard];
 
 
 if ( +(product + discount + tax).toFixed(2) === 3.1) {
@@ -19,9 +21,17 @@ if ( +(product + discount + tax).toFixed(2) === 3.1) {
     showMessage('true');
 }
 
+/* Differant standards showing in order to fill 
+this array of placeholders that can be turned into an array of values that meets our standards.
+Building up from falsy array.*/
+if (this.Array['', 0, NaN, null, undefined] !== standard) {
+    showMessage('fix-me');
+}
 
-/**This productId in function scope, goes out of exsistance as soon as the function fix is done executing.
- * 
+
+/**This productId in function scope, 
+ * goes out of exsistance as soon as the function fix is done executing.
+ 
  */
 
 function showProductId() {
@@ -33,6 +43,11 @@ function showProductId() {
     
     function fix() {
         let productId = discounted;
+/*For use during service to the back-end. 
+The productId here should not be the same productId in the showProductId function.
+The main reason for this is to protect data during this function fix to fix or adjust discounts based on customer absolute and third party customer relations from developers perspectives. 
+*/
+
         console.log('in fix: ', productId);
     }
 
