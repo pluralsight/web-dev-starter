@@ -24,6 +24,7 @@ if ( +(product + discount + tax).toFixed(2) === 3.1) {
  */
 
 function showProductId() {
+    let discounted;
     // this productId comes back as soon as fix is completed execution.
     let productId = standard;
     
