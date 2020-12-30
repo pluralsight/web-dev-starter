@@ -1,4 +1,5 @@
-/* Below are variables that might be used in assocication with product.
+/* Reason 'de Tour~
+Below are variables that might be used in assocication with product.
 I am letting them be declared in the global scope.
 These are standards that will be able to be used when one needs to fix a discount.
 Thes standards are maintained to control profit margins on sales when time comes for a hot fix.
