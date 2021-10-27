@@ -7,12 +7,46 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JS Starter</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- 
+    If you have script src's up above the <body>
+      You would have to add an extra coding
+    <script src="script.js"></script>
+    <script src="smallProject.js"></script>
+    
+    Below makes a list of functions to load, more than 2, just keep adding
+
+    <script language="javascript">
+    function load() {
+      showName();
+      showTask1();
+      showTask2();
+    }
+  </script> 
+-->
 </head>
 
+<!-- 
+  onload function
+  <body onload="showName(), showTask1()">
+    For some reason can only accept 2 functions
+ -->
 <body>
-<h1>Hello World!</h1>
+  <h1 id="name"> Name of Project </h1>
 
-<script src="script.js"></script>
+  <h1 id="task1"> Task 1 here </h1>
+
+  <h1 id="task2"> Task 2 here </h1>
+
+  <h1 id="task3"> Task 3 here </h1>
+
+  <h1 id="task4"> Task 4 here </h1>
+
+  <h1 id="task5"> Task 5 here </h1>
+  <div id="task5b">Task 5b here</div>
+
+  <script src="script.js"></script>
+  <script src="smallProject.js"></script>
 </body>
 
 </html>
