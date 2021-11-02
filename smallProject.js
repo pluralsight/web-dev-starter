@@ -15,13 +15,26 @@ function showHtmlTaskMessage(task, taskMessage) {
     document.getElementById(task).innerHTML = taskMessage;
 }
 // Creates an introduction message using different names/age/work status
+// function introduction(a) {
+//     return `Hello, ${a.name}, I am ${a.age} and I work ${a.work}.`;
+// }
 function introduction(a) {
-    return `Hello, ${a.name}, I am ${a.age} and I work ${a.work}.`;
+    if (a.isFullTime == true) {
+        return `Hello, ${a.name}, I am ${a.age} and I work full time.`;
+    } else {
+        return `Hello, ${a.name}, I am ${a.age} and I work part time.`;
+    }
 }
 // Creates an intro with an extra line for Shopping List
 function introductionWithShoppingList(a) {
-    return `Hello, ${a.name}, I am ${a.age} and I work ${a.work}.
-    Shopping List:`;
+    if (a.isFullTime == true) {
+        return `Hello, ${a.name}, I am ${a.age} and I work full time.
+        Shopping List:`;
+    } else {
+        return `Hello, ${a.name}, I am ${a.age} and I work part time.
+        Shopping List:`;
+    }
+
  }
 // Creating a list for the shopping list
 function createShoppingList(a, task) {
@@ -73,7 +86,7 @@ function showTask2() {
 let person3 = {
     name: "Chong",
     age: "28",
-    work: "full time",
+    isFullTime: true,
     task: "task3"
 };
 // TODO: Come back
@@ -91,7 +104,7 @@ function showTask3() {
 let person4 = {
     name: "Harley",
     age: "27",
-    work: "part time",
+    isFullTime: false,
     task: "task4"
 };
 function showTask4() {
@@ -109,7 +122,7 @@ function showTask4() {
 let person5 = {
     name: "Ryan",
     age: "18",
-    work: "full time",
+    isFullTime: true,
     task: "task5",
     taskb: "task5b",
     taskc: "task5c",
@@ -142,7 +155,7 @@ function showTask5c() {
 let person6 = {
     name: "Abel",
     age: "25",
-    work: "full time",
+    isFullTime: true,
     task: "task6",
     taskb: "task6b",
     shoppingList: [],
@@ -174,7 +187,7 @@ function task6c() {
 let person7 = {
     name: "Tom",
     age: "26",
-    work: "full time",
+    isFullTime: true,
     task: "task7",
     taskb: "task7b"
 }
@@ -206,7 +219,7 @@ function task7c() {
 let person8 = {
     name: "Hamil",
     age: "24",
-    work: "full time",
+    isFullTime: true,
     task: "task8",
     taskb: "task8b"
 }
