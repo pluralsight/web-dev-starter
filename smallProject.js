@@ -37,11 +37,12 @@ function introductionWithShoppingList(a) {
 
  }
 // Creating a list for the shopping list
-function createShoppingList(a, task) {
+function createShoppingList(person, task) {
+    console.log(person.shoppingList)
     let listTaskItems = '<ul>';
-    for (let i = 0; i < a.length; i++) {
-        console.log(a[i]);
-        listTaskItems += `<li>${a[i]}</li>`
+    for (let i = 0; i < person.shoppingList.length; i++) {
+        console.log(task, person.shoppingList[i]);
+        listTaskItems += `<li>${person.shoppingList[i]}</li>`
     }
     listTaskItems += `</ul>`;
     showHtmlTaskMessage(task, listTaskItems);
@@ -133,7 +134,7 @@ function showTask5() {
 }
 //Another method is using the FOR // Creating a bullet point list using a for loop - google
 function showTask5b() {
-    createShoppingList(person5.shoppingList, person5.taskb);
+    createShoppingList(person5, person5.taskb);
 }
 
 // Task 6
@@ -152,23 +153,23 @@ let person6 = {
     isFullTime: true,
     task: "task6",
     taskb: "task6b",
-    shoppingList: [],
+    shoppingList: [ 'Pizza', 'Salad', 'Cheese' ],
     wishList: ['Milk', 'Bread']
 }
-
-const abelShoppingList = [ 'Pizza', 'Salad', 'Cheese' ];
 function showTask6() {
     const taskMessage = introductionWithShoppingList(person6);
     showTaskMessage(person6.task, taskMessage);
 }
 function showTask6b() {
-    createShoppingList(abelShoppingList, person6.taskb);
+    createShoppingList(person6, person6.taskb);
 }
 function task6c() {
-    abelShoppingList.push('Milk');
-    console.log(abelShoppingList);
-    createShoppingList(abelShoppingList, person6.taskb);
-    document.getElementById('task6cButton').disabled = true;
+    if (person6.wishList.length === 0) {
+        alert(" No more items to add. ")
+    } else {
+        person6.shoppingList.push(person6.wishList.shift());
+        createShoppingList(person6, person6.taskb);
+    }
 }
 
 // Task 7
@@ -183,21 +184,25 @@ let person7 = {
     age: "26",
     isFullTime: true,
     task: "task7",
-    taskb: "task7b"
+    taskb: "task7b",
+    shoppingList: [ 'Pizza', 'Salad', 'Cheese' ],
+    wishList: []
 }
-const tomShoppingList = [ 'Pizza', 'Salad', 'Cheese' ];
 function showTask7() {
     const taskMessage = introductionWithShoppingList(person7);
     showTaskMessage(person7.task, taskMessage);
 }
 function showTask7b() {
-    createShoppingList(tomShoppingList, person7.taskb);
-}
+    createShoppingList(person7, person7.taskb);
+} 
 function task7c() {
-    tomShoppingList.pop();
-    console.log(tomShoppingList);
-    createShoppingList(tomShoppingList, person7.taskb);
-    document.getElementById('task7cButton').disabled = true;
+    if (person7.shoppingList.length == 0) {
+        document.getElementById('task7b').innerHTML = `- No items in shopping list.`;
+        alert(" No more items to remove. ")
+    } else {
+        person7.shoppingList.pop();
+        createShoppingList(person7, person7.taskb);
+    }
 }
 
 // Task 8
@@ -215,30 +220,84 @@ let person8 = {
     age: "24",
     isFullTime: true,
     task: "task8",
-    taskb: "task8b"
+    taskb: "task8b",
+    shoppingList: [ 'Pizza', 'Salad', 'Cheese' ],
+    wishList: [ 'Milk' ]
 }
-const hamilShoppingList = [ 'Pizza', 'Salad', 'Cheese' ];
 function showTask8() {
     const taskMessage = introductionWithShoppingList(person8);
     showTaskMessage(person8.task, taskMessage);
 }
 function showTask8b() {
-    createShoppingList(hamilShoppingList, person8.taskb)
+    createShoppingList(person8, person8.taskb)
 }
-let click = 0;
 function task8c() {
-    if (click > 0) {
-        alert("No more items to add.");
+    if (person8.wishList.length == 0) {
+        alert(" No more items to add. ")
     } else {
-        hamilShoppingList.push('Milk');
-        createShoppingList(hamilShoppingList, person8.taskb)
+        person8.shoppingList.push(person8.wishList.shift());
+        createShoppingList(person8, person8.taskb)
     }
-    click++;
-    console.log(click);
+
+}
+
+const person9 = {
+    name: 'Test Person',
+    shoppingList: [ 'Milk', 'Eggs', 'Bread'],
+    taskb: "task9b"
+}
+const shop = {
+    products: [
+        {
+            name: 'Milk',
+            inStock: true,
+            price: 1.50
+        },
+        {
+            name: 'Eggs',
+            inStock: false,
+            price: 0.99
+        },
+        {
+            name: 'Bread',
+            inStock: true,
+            price: 1.50
+         },
+         {
+            name: 'Crumpets',
+            inStock: true,
+            price: 1.00
+         },
+    ],
+    name: 'Fake Shop'
+}
+
+function showTask9b() {
+    createShoppingList(person9, person9.taskb)
+}
+
+function showTask9c() {
+// need to make a new list with each item from the shopping list
+// in said list, also add new text alongside it
+// saying whether the item is available or unavailable
 }
 
 
+function showTask9d(person) {
+    // following the previous created list
+    // use if statements to then add the prices up all together
+    // finally display the full price of items that are AVAILABLE
+    // dont add items that are not in stock in shop
 
+    const itemsAvailableInShop = person.shoppingList.filter(item => {
+        const shopProduct = shop.products.find((product) => {
+            return product.name === item
+        })
+
+        return shopProduct.inStock
+    })
+    console.log('itemsAvailableInShop', itemsAvailableInShop)
+}
 
 showTask1();
 showTask2();
@@ -246,10 +305,11 @@ showTask3();
 showTask4();
 showTask5();
 showTask5b();
-showTask5c();
 showTask6();
 showTask6b();
 showTask7();
 showTask7b();
 showTask8();
 showTask8b();
+showTask9b();
+showTask9d(person9);
