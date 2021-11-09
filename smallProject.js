@@ -125,21 +125,15 @@ let person5 = {
     isFullTime: true,
     task: "task5",
     taskb: "task5b",
-    taskc: "task5c",
-    shoppingList: ['Pizza', 'Salad', 'Cheese'],
+    shoppingList: ['Pizza', 'Salad', 'Cheese']
 }
-const ryanShoppingList = [ 'Pizza', 'Salad', 'Cheese'];
-const ryansFriend = [ 'Fish', 'Chocolate', 'Sandwich'];
 function showTask5() {
     const taskMessage = introductionWithShoppingList(person5);
     showTaskMessage(person5.task, taskMessage);
 }
 //Another method is using the FOR // Creating a bullet point list using a for loop - google
 function showTask5b() {
-    createShoppingList(ryanShoppingList, person5.taskb);
-}
-function showTask5c() {
-    createShoppingList(ryansFriend, person5.taskc);
+    createShoppingList(person5.shoppingList, person5.taskb);
 }
 
 // Task 6
