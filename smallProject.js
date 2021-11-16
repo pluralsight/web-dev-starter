@@ -196,7 +196,7 @@ function showTask7b() {
     createShoppingList(person7, person7.taskb);
 } 
 function task7c() {
-    if (person7.shoppingList.length == 0) {
+    if (person7.shoppingList.length === 0) {
         document.getElementById('task7b').innerHTML = `- No items in shopping list.`;
         alert(" No more items to remove. ")
     } else {
@@ -232,7 +232,7 @@ function showTask8b() {
     createShoppingList(person8, person8.taskb)
 }
 function task8c() {
-    if (person8.wishList.length == 0) {
+    if (person8.wishList.length === 0) {
         alert(" No more items to add. ")
     } else {
         person8.shoppingList.push(person8.wishList.shift());
@@ -284,20 +284,79 @@ function showTask9c() {
 
 
 function showTask9d(person) {
-    // following the previous created list
-    // use if statements to then add the prices up all together
-    // finally display the full price of items that are AVAILABLE
-    // dont add items that are not in stock in shop
-
     const itemsAvailableInShop = person.shoppingList.filter(item => {
-        const shopProduct = shop.products.find((product) => {
-            return product.name === item
+        console.log(item);
+        const shopProduct = shop.products.find((products) => {
+            console.log('product',products);
+            return products.name === item
         })
-
         return shopProduct.inStock
     })
-    console.log('itemsAvailableInShop', itemsAvailableInShop)
+    console.log(itemsAvailableInShop);
+
+
+    const priceForItemsAvailable = itemsAvailableInShop.filter(item => {
+        console.log(item);
+        const shopPrice = shop.products.find((products) => {
+            console.log('Products Price',products);
+            return products.price
+        })
+        return shopPrice.price
+    })    
+    console.log(priceForItemsAvailable);
+
 }
+    // create a new array list
+    // remove all the items that are not .inStock from original shopping list
+    // want to go through each item on the shopping list, 
+    // find the item from the shopping list IN the store list
+    // once an item is found, return the object IF the item is .inStock === true
+
+    // new task of price of all items in shopping list, disregarding the availability of items
+
+    // use the original shopping list
+    // try to .find the .price of all items from the shopping list
+    // list them up and then use a .(function) that adds items in an array
+    // go through all the items in the array
+    // different ways to add them up, research up
+    // e.g let cost = 0 , then add price
+    // use .length as a condition to add the prices, 
+    // .shoppingList.length = 3  -->
+
+
+    // another task to show price considering the availability of items in stock 
+
+    // try to pseudo code it 
+    // how i could solve it 
+    // 
+
+    // when going through .every and .some
+    // create a personal scenario, and write up a pseudo code for it 
+
+
+//.filter/.find , kinda like a for loop
+
+
+// READ BELOW
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+// MDN on .find as well
+// at the bottom of the MDN - check the other articles
+
+
+// functions / methods on an array, to help let user go through the array,
+// finds the first instance then exits, e.g.
+// .find can fail, if it never finds an acceptable item
+// there is a way aroundabout it by writing a 'failsafe' code?
+// line 298, - GUARDING - against undefined, 
+// e.g. - if shop product is not undefined, return shopproduct.instock 
+// else return false 
+
+// pay attention to the RETURNS , 
+// filter - nothing returns, just an empty array, compared to undefined, 
+// fitler vs find , find more difficult to cope with cause it may return undefined
+// any library, need to find out the returns, to keep an open mind about all scenarios
+
+// type script - learn JavaScript first before trying to fully understand Type Script 
 
 showTask1();
 showTask2();
