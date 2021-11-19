@@ -261,13 +261,13 @@ const shop = {
         {
             name: 'Bread',
             inStock: true,
-            price: 1.50
-         },
-         {
+            price: 1.25
+        },
+        {
             name: 'Crumpets',
             inStock: true,
             price: 1.00
-         },
+        },
     ],
     name: 'Fake Shop'
 }
@@ -282,30 +282,65 @@ function showTask9c() {
 // saying whether the item is available or unavailable
 }
 
+const itemsAvailableInShop = [];
 
-function showTask9d(person) {
+function findInStock (person) {
     const itemsAvailableInShop = person.shoppingList.filter(item => {
-        console.log(item);
         const shopProduct = shop.products.find((products) => {
-            console.log('product',products);
-            return products.name === item
+            return products.name === item;
         })
-        return shopProduct.inStock
+        return shopProduct.inStock;
     })
-    console.log(itemsAvailableInShop);
-
-
-    const priceForItemsAvailable = itemsAvailableInShop.filter(item => {
-        console.log(item);
-        const shopPrice = shop.products.find((products) => {
-            console.log('Products Price',products);
-            return products.price
-        })
-        return shopPrice.price
-    })    
-    console.log(priceForItemsAvailable);
-
+    return itemsAvailableInShop;
 }
+
+const reducer = (previousValue, currentValue) => previousValue + currentValue;
+
+// function showTask9d(person) {
+//     const itemsAvailableInShop = person.shoppingList.filter(item => {
+//         console.log(item);
+//         const shopProduct = shop.products.find((products) => {
+//             console.log('product',products);
+//             return products.name === item
+//         })
+//         return shopProduct.inStock
+//     })
+//     console.log('Products available:', itemsAvailableInShop);
+// }
+
+function showTask9d(person)
+{
+    const productsInStock = findInStock(person);
+    console.log(productsInStock);
+}
+
+
+
+function showTask9e(person) {
+    const productsInStock = findInStock(person);    
+    const priceListForAvailable = productsInStock.map((item) => {
+        const product = shop.products.find((product) => {
+            return product.name === item
+        })
+        return product.price
+    })
+    console.log('Price for Available Only Items:', priceListForAvailable.reduce(reducer));
+}
+
+function showTask9f(person) {
+    // loop through shopping list
+    // if shop has the product get it's price
+    // calculate cost of all products
+    const priceListForAll = person.shoppingList.map((item) => { // go through persons shopping list
+        const product = shop.products.find((product) => { // find item in the store
+            return product.name === item
+        })
+        return product.price
+    })
+    console.log('Price for All Items:', priceListForAll.reduce(reducer));
+}
+
+
     // create a new array list
     // remove all the items that are not .inStock from original shopping list
     // want to go through each item on the shopping list, 
@@ -372,3 +407,6 @@ showTask8();
 showTask8b();
 showTask9b();
 showTask9d(person9);
+// showTask9e(itemsAvailableInShop);
+showTask9e(person9);
+showTask9f(person9);
