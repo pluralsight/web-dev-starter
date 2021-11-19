@@ -7,12 +7,65 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JS Starter</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- 
+    If you have script src's up above the <body>
+      You would have to add an extra coding
+    <script src="script.js"></script>
+    <script src="smallProject.js"></script>
+    
+    Below makes a list of functions to load, more than 2, just keep adding
+
+    <script language="javascript">
+    function load() {
+      showName();
+      showTask1();
+      showTask2();
+    }
+  </script> 
+-->
 </head>
 
+<!-- 
+  onload function
+  <body onload="showName(), showTask1()">
+    For some reason can only accept 2 functions
+ -->
 <body>
-<h1>Hello World!</h1>
+  <h1 id="name"> Name of Project </h1>
 
-<script src="script.js"></script>
+  <h1 id="task1"> Task 1 here </h1>
+
+  <h1 id="task2"> Task 2 here </h1>
+
+  <h1 id="task3"> Task 3 here </h1>
+
+  <h1 id="task4"> Task 4 here </h1>
+
+  <h1 id="task5"> Task 5 here </h1>
+  <div id="task5b">Task 5b here </div>
+
+  <h1 id="task6"> Task 6 here </h1>
+  <div id="task6b"> Task 6b here </div>
+
+  <input type = "button" id="task6cButton" onclick="task6c()" value="Add to shopping list">
+
+  <h1 id="task7"> Task 7 here </h1>
+  <div id="task7b"> Task 7b here </div>
+  <input type = "button" id="task7cButton" onclick="task7c()" value="Remove from shopping list">
+
+  <h1 id="task8"> Task 8 here </h1>
+  <div id="task8b"> Task 8b here </div>
+  <input type = "button" id="task8cButton" onclick="task8c()" value="Add to shopping list">
+
+  <h1> Test Person's Shopping List should display here: </h1>
+  <div id="task9b"> Shopping list. </div>
+  <h1> Shopping List Items Availability: </h1>
+  <div id="task9c"> Availability? </div>
+  
+  <script src="script.js"></script>
+  <script src="smallProject.js"></script>
+  
 </body>
 
 </html>
