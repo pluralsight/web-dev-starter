@@ -1,23 +1,57 @@
-
-
-
-
-
-function plusTwo(num) {
-  return num + 2;
+function sumDigits (num){
+  //check if num is negative
+  //drop the negative sign
+  var inputIsNegative = false;
+if (num < 0){
+  num = Math.abs(num)
+  inputIsNegative = true;
 }
-console.log(plusTwo(3)); // 3 + 2 = 5
+  var total = 0;
+  var numString = num.toString();
 
-function timesTwo(num) {
-  return plusTwo(num) * 2;
+  var firstValue = Number(numString[0])
+
+  for (var i = 0; i < numString.length; i++){
+    total += Number(numString[i]);
+  }
+
+  //if input is negative
+if (inputIsNegative){
+  total = total - (2 * firstValue)
+  return total;
+}else {
+  return total;
 }
-console.log(timesTwo(3)); // (3 + 2) * 2 = 10
-
-function DividedByFive(num) {
-  return timesTwo(num) / 5;
 }
+//test case
 
-console.log(DividedByFive(3)) // ((3 + 2) * 2) / 5 = 2
+var output = sumDigits(1148);
+console.log(output); // --> 14
+
+var output = sumDigits(-316);
+console.log(output); // --> 4
+
+
+
+
+
+
+
+// function plusTwo(num) {
+//   return num + 2;
+// }
+// console.log(plusTwo(3)); // 3 + 2 = 5
+
+// function timesTwo(num) {
+//   return plusTwo(num) * 2;
+// }
+// console.log(timesTwo(3)); // (3 + 2) * 2 = 10
+
+// function DividedByFive(num) {
+//   return timesTwo(num) / 5;
+// }
+
+// console.log(DividedByFive(3)) // ((3 + 2) * 2) / 5 = 2
 
 
 
