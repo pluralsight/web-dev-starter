@@ -13,7 +13,7 @@ function and(expression1, expression2) {
    
  }
  
- var output = and(false, true);
+ var output = and(true, true);
  console.log(output); 
  
 
