@@ -21,20 +21,17 @@ for (var i = 0; i < inventory.length; i ++){
     //console.log(inventory[i].shoes[j].name)
       //split string and create array on the space
       var shoeArray = (inventory[i].shoes[j].name).split(' ')
-      console.log('shoeArray', shoeArray)
+      //console.log('shoeArray', shoeArray)
     for(var k = 0; k < shoeArray.length; k++){
         if( shoeArray[k].indexOf('lace') !== -1){
-            console.log('shoeArray[k]', shoeArray[k], 'indexOf Lace', k)
+            //console.log('shoeArray[k]', shoeArray[k], 'indexOf Lace', k)
             individualLaceObject = {
                 'nameWords' : shoeArray,
                 'targetWordIndex' : k
             }
             masterArray.push(individualLaceObject)
 
-
-
         }
-
 
     }
       //if index of lace in shoeArray is not equal to -1
