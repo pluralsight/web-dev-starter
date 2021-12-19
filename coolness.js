@@ -5,6 +5,9 @@ function titleCase(str) {
     return titleCased.join(' ');
 }
 
+var stringofwords = 'This is a string of words'
+var result = titleCase(stringofwords)
+console.log(result)
 
 var numbers = [1, 2, 3, 4, 5]
 function add(num1, num2) {
