@@ -1,12 +1,13 @@
 
 
-JS Cardio Examples
+//JS Cardio Examples
 function reversString(str){
     return str
       .split('')
       .reverse()
       .join('');
-
+      console.log('str', str)
+/*
     var revString = '';
     for (let i = str.length - 1; i >= 0; i--){
         revString = revString + str[i]
@@ -42,14 +43,15 @@ function reversString(str){
 
     return str.split('').reduce((revString, char) => char + revString, '');
 
+*/
 
 
+}
 
-// }
 
-// string = 'Hello World'
-// var result = reversString(string)
-// console.log(result)
+string = 'Hello World'
+var result = reversString(string)
+console.log(result)
 
 
 
