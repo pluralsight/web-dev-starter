@@ -25,7 +25,7 @@ function upperCaseEveryWord(nameStr){
 
 
 
-
+/*
 
 //With .charAt()
 
@@ -45,4 +45,4 @@ function upperCaseEveryWord(nameStr) {
   
   var result = upperCaseEveryWord('Now is the time for joy');
   console.log (result);
-  
+  */
