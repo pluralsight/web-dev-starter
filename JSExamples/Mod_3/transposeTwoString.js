@@ -14,18 +14,96 @@ o d
 
 function transposeTwoStrings(arr) {
     var characters = '';
-    for (var i = 0; i < arr[0].length; i++) {
+    // var newArr = arr[0];
+  
+  var bigWord = findLongest(arr);
+
+  
+    for (var i = 0; i < arr.length; i++){
+        for (var j = 0; j < bigWord.length; j++){
+            if(arr[i][j] === undefined){
+                arr[i] += ' '
+            }
+        }
+    }
+  
+ 
+  for (var i = 0; i < bigWord.length; i++) {
+    if(i === bigWord.length - 1){  
+      characters += arr[0][i] + ' ' + arr[1][i]
+    } else {
         characters += arr[0][i] + ' ' + arr[1][i] + '\n'
+    }
+   
         
     }
 
 return characters
 }
 
+function findLongest (wordArray){
+    var longestWord = wordArray[0];
+    for (var i = 0; i < wordArray.length; i++){
+        if(wordArray[i] > longestWord){
+            longestWord = wordArray[i]
+        }
+    }
+    
+    return longestWord
+}
+
+var arrayOfWords = ['Hello', 'Worldddddddd'];
+//console.log(transposeTwoStrings(arrayOfWords))
+
+function assertEquals (actual, expected, testName){
+    if(actual === expected) {
+        console.log(`Passed`)
+    } else {
+        console.log(`FAILED: ${testname} Expected ${expected} but got ${actual}`)
+    }
+}
+
+actual1 = transposeTwoStrings(arrayOfWords)
+expected1 = `H W\ne o\nl r\nl l\no d\n  d\n  d\n  d\n  d\n  d\n  d\n  d`;
+assertEquals(actual1, expected1, 'both strings should match')
 
 
-var arrayOfWords = ['Hello', 'World'];
-console.log(transposeTwoStrings(arrayOfWords))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function transposeTwoStrings(arr) {
+//     var characters = '';
+//     for (var i = 0; i < arr[0].length; i++) {
+//         characters += arr[0][i] + ' ' + arr[1][i] + '\n'
+        
+//     }
+
+// return characters
+// }
+
+
+
+// var arrayOfWords = ['Hello', 'World'];
+// console.log(transposeTwoStrings(arrayOfWords))
 
 /*
 H W
