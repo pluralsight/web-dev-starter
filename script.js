@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var users = [
   {
     "id": 1,
@@ -107,3 +108,6 @@ var output = ["Sincere@april.biz", "Victor Plains, Suite 879, Wisokyburgh, 90566
   actual1 = generateSampleView(users)
   expected1 = ["Sincere@april.biz", "Victor Plains, Suite 879, Wisokyburgh, 90566-7771"];
   assertArrayEqual(actual1, expected1, 'both arrays should be equal')
+=======
+console.log('hell')
+>>>>>>> a870710c0c0c2cfba409b370dd48bada026fe21c
