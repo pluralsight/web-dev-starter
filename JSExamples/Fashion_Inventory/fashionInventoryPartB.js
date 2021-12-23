@@ -48,12 +48,7 @@
   }
   
 
-/*var expected = {'designers': [{'name': 'Brunello Cucinelli',
-                                  'averagePrice': 1025    },
-                              {'name': 'Gucci',
-                                  'averagePrice': 850     } ]
-                };
-*/
+
 var currentInventory = [
     {
       name: 'Brunello Cucinelli',
@@ -75,7 +70,34 @@ var currentInventory = [
   
 
 
-  var result = calculateAveragePricePerDesigner(currentInventory);
-  console.log(result);
-  console.log(result.designers)
+  // var result = calculateAveragePricePerDesigner(currentInventory);
+  // console.log(result);
+  // console.log(result.designers)
+
+  var actual1 = calculateAveragePricePerDesigner(currentInventory)
+  var expected1 = {
+    'designers': [
+      {
+        'name': 'Brunello Cucinelli',
+        'averagePrice': 1025
+      },
+      {
+        'name': 'Gucci',
+        'averagePrice': 850
+      }
+    ]
+  };
+assertObjectsEqual(actual1, expected1, 'both objects should be the same')
+
+
+function assertObjectsEqual (actual, expected, testName){
+      var actual = JSON.stringify(actual)
+      var expected = JSON.stringify(expected)
+
+      if(actual === expected){
+          console.log(`Passed`)
+      }else{
+          console.log(`FAILED ${testName} Expected ${expected} but got ${actual}`)
+      }
+  }
   

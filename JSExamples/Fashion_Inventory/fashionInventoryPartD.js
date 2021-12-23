@@ -17,13 +17,10 @@ for (var i = 0; i < inventory.length; i ++){
 //iterate through inner array at shoes
 for (var j = 0; j < inventory[i].shoes.length; j++){
   //at key name in shoes object
-  //console.log(inventory[i].shoes[j].name)
     //split string and create array on the space
     var shoeArray = (inventory[i].shoes[j].name).split(' ')
-    //console.log('shoeArray', shoeArray)
   for(var k = 0; k < shoeArray.length; k++){
       if( shoeArray[k].indexOf('lace') !== -1){
-          //console.log('shoeArray[k]', shoeArray[k], 'indexOf Lace', k)
           masterArray.push({
               'nameWords' : shoeArray,
               'targetWordIndex' : k
