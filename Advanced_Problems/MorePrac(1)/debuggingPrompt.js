@@ -1,6 +1,7 @@
 //---------------------------
 /*
-Given an array of mixed types, return true if there are more numbers than characters. Otherwise, return false.
+Given an array of mixed types, return true if there are more numbers than characters. Otherwise, 
+return false.
 */
 
 var input = [1, true, 6, 'h','k',7,'o',[], 9];
@@ -12,7 +13,7 @@ function hasMoreNums(arr) {
   for (var i = 0; i < arr.length; i ++) {
     if (typeof arr[i] === 'number') {
       nums ++;
-    } else {
+    } else if(typeof arr[i] === 'string'){
       chars ++;
     }
   }
@@ -23,7 +24,8 @@ console.log(output); // ==> true
 
 //-------------------------------
 
-//Given an aray of objects that have val and keep and/or erase properties as either true or false, return a new array of the values that should be kept.
+//Given an aray of objects that have val and keep and/or erase properties as either true
+// or false, return a new array of the values that should be kept.
 /*
 edge cases:
 - contains both erase and keep that have opposite directions, => default to erase
@@ -67,10 +69,14 @@ function eraseOrKeep(arr) {
   var vals = [];
   for (var i =0; i < arr.length; i ++) {
     var obj = arr[i];
-    if(obj.keep) {
+    if(obj.keep !== undefined && obj.erase !== undefined) {
+        if(obj.erase === false){
      vals.push(obj.val);
-    } else {
-     vals.push(obj.val)
+        }
+    } else if (obj.erase === false){
+        vals.push(obj.val)
+    } else if (obj.keep === true) {    
+        vals.push(obj.val)
     }
   }
   return vals;
@@ -120,9 +126,15 @@ var test3 = expendableIncome([
 function expendableIncome(bills, budget) {
   var total = 0;
   for (var i = 0; i < bills.length; i ++) {
-    total += Number(bills.cost);
+    total += Number(bills[i].cost);
   }
+  if(total > Number(budget)){
+      return '$0'
+  } else {
   return "$" + (Number(budget) - total) * 0.2;
+  }
 }
-
+console.log(test1)
+console.log(test2)
+console.log(test3)  
 //---------------------------

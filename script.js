@@ -1,64 +1,19 @@
-
-//Given an aray of objects that have val and keep and/or erase properties as either true
-// or false, return a new array of the values that should be kept.
-/*
-edge cases:
-- contains both erase and keep that have opposite directions, => default to erase
-- contains only erase as true or false 
-- contains only keep as true or false
-*/
-
-var input = [
-    {
-      keep: false,
-      erase: true,
-      val: 5,
-    },
-    {
-      keep: true,
-      erase: false,
-      val: 10
-    },
-    {
-      keep: false,
-      val: 3,
-    },
-    {
-      erase: true,
-      val: 7
-    },
-    {
-      erase: false,
-      val: 9
-    },
-    {
-      keep: true,
-      erase: true,
-      val: 8
-    },
-  ];
-  
-var expected = [10, 9];
-
-function eraseOrKeep(arr) {
-  var vals = [];
-  for (var i =0; i < arr.length; i ++) {
-    var obj = arr[i];
-    if(obj.keep !== undefined && obj.erase !== undefined) {
-        if(obj.erase === false){
-     vals.push(obj.val);
-        }
-    } else if (obj.erase === false){
-        vals.push(obj.val)
-    } else if (obj.keep === true) {    
-        vals.push(obj.val)
+function isIsogram(text) {
+    // add each char to a set
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+    // note: a set drops dup values
+    // thus, to see if all the chars were unique,
+    // check length of text and the size of the set
+    var cleanText = text.toLowerCase()
+    var accSet = new Set(cleanText)
+    console.log(accSet)
+    
+    if(accSet.size === text.length){
+        return true;
+    } else {
+        return false;
     }
   }
-  return vals;
-} 
 
-console.log(eraseOrKeep(input))
-
-
-//var test = JSON.stringify(expected) === JSON.stringify(eraseOrKeep(input));
-//console.log('result:', test)
+  var actual = 'Fireox'
+  console.log(isIsogram(actual))
