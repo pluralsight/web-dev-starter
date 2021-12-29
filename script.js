@@ -1,26 +1,64 @@
-function detectOutlierValue(string) {
-  var oddArr = []
-  var evenArr = []
-  var arr = string.split(' ')
 
-  for (let i = 0; i < arr.length; i++){
-    if (arr[i] % 2 === 0){
-      evenArr = evenArr.concat(parseInt(arr[i]))
-    } else {
-      oddArr = oddArr.concat(parseInt(arr[i]))
+//Given an aray of objects that have val and keep and/or erase properties as either true
+// or false, return a new array of the values that should be kept.
+/*
+edge cases:
+- contains both erase and keep that have opposite directions, => default to erase
+- contains only erase as true or false 
+- contains only keep as true or false
+*/
+
+var input = [
+    {
+      keep: false,
+      erase: true,
+      val: 5,
+    },
+    {
+      keep: true,
+      erase: false,
+      val: 10
+    },
+    {
+      keep: false,
+      val: 3,
+    },
+    {
+      erase: true,
+      val: 7
+    },
+    {
+      erase: false,
+      val: 9
+    },
+    {
+      keep: true,
+      erase: true,
+      val: 8
+    },
+  ];
+  
+var expected = [10, 9];
+
+function eraseOrKeep(arr) {
+  var vals = [];
+  for (var i =0; i < arr.length; i ++) {
+    var obj = arr[i];
+    if(obj.keep !== undefined && obj.erase !== undefined) {
+        if(obj.erase === false){
+     vals.push(obj.val);
+        }
+    } else if (obj.erase === false){
+        vals.push(obj.val)
+    } else if (obj.keep === true) {    
+        vals.push(obj.val)
     }
-    arr[i] = Number(arr[i])
   }
-    
-  if (evenArr.length > oddArr.length){
-    return arr.indexOf(oddArr[0]) + 1
-  } else {
-    return arr.indexOf(evenArr[0]) + 1
-  }
+  return vals;
+} 
+
+console.log(eraseOrKeep(input))
 
 
-}
-
-
-console.log(detectOutlierValue("2 4 7 8 10")); // => 3 - Third number is odd, while the rest of the numbers are even
-console.log(detectOutlierValue("1 10 1 1"));  //=> 2 - Second number is even, while the rest of the numbers are odd
+//var test = JSON.stringify(expected) === JSON.stringify(eraseOrKeep(input));
+//console.log('result:', test)
