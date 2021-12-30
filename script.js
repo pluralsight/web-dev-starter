@@ -1,30 +1,75 @@
-function findSmallestIndex(array) {
-    var smallestElement = array[0]; // Stores the smallest value
-    var smallestIndex = 0; // Stores the index of the smallest value
-  
-    for (var i = 1; i < array.length; i++) {
-      if (array[i] < smallestElement) {
-        smallestElement = array[i];
-        smallestIndex = i;
-      }
-    }
-  
-    return smallestIndex;
-  }
-  
-  // 2. Sort the array
-  function selectionSort(array) {
-    var sortedArray = [];
-    var length = array.length;
-  
-    for (var i = 0; i < length; i++) {
-      // Finds the smallest element in the array 
-      var smallestIndex = findSmallestIndex(array);
-      // Adds the smallest element to new array
-      sortedArray.push(array.splice(smallestIndex, 1)[0]);
-    }
-  
-    return sortedArray;
-  }
-  
-  console.log(selectionSort([5, 3, 6, 2, 10])); // [2, 3, 5, 6, 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //removeElement eductional exercise - Remove all lucky 7s
+// function removeElement (arr, target) {
+
+//   var mySet = new Set()
+
+
+
+//   var garbage = []
+//   while(arr.indexOf(target) !== -1) {
+//     var i = arr.indexOf(target);
+//     garbage.push(arr.splice(i, 1)[0]);
+//   }
+// console.log(garbage)
+// return arr;
+// }
+
+
+
+// console.log(removeElement([1, 3, 5, 7, 9, 7, 4, 2, 1, 7, 7, 5], 7))
+
+
+
+
+
+
+// function fun (array) {
+//   var accArr = [];
+
+//   // while(array.length !== 0){
+//   //   //accArr = accArr.concat(array.splice(array.length-1,1))
+
+
+    
+//   // }
+
+//   for(let i = 0; i < array.length; i++){
+//     //accArr.push(array.splice(0,1)[0])
+//     accArr = accArr.concat(array.splice(array.length - 1,1))
+//     i--
+//   }
+// return accArr;
+// }
+
+// console.log(fun([22, 23, 24, 25, 26]))
+
+
+
