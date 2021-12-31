@@ -30,16 +30,7 @@ for (var j = 0; j < inventory[i].shoes.length; j++){
       }
 
   }
-    //if index of lace in shoeArray is not equal to -1
     
-      //get index of 'lace' and store in variable
-     
-      //object = object @ nameWords key and targetWordIndex
-      //set 'nameWords' =  word array into empty object
-      //set 'targetWordIndex' =  'lace' index into empty object
-      //push object into master array variable
-      
-      //clear variable for next iteration
     }
 
  }
