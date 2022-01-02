@@ -1,66 +1,74 @@
-/*
-Create a function that takes in a year and returns the correct 
-century.
-Examples
+//object check... if key is NOT in object(JSON.stringify)...
+//add key and value of one
+//other wise add one to value
 
-century(1756) ➞ "18th century"
-
-century(1555) ➞ "16th century"
-
-century(1000) ➞ "10th century"
-
-century(1001) ➞ "11th century"
-
-century(2005) ➞ "21st century"
-
-Notes
-
-    All years will be between 1000 and 2010.
-    The 11th century is between 1001 and 1100.
-    The 18th century is between 1701-1800.
-*/
-
-function century(num) {
-  var accStr = '';
-
-var centuryObj = {
-  "10th century" : 1000,
-  "11th century" : 1100,
-  "12th century" : 1200,
-  "13th century" : 1300,
-  "14th century" : 1400,
-  "15th century" : 1500,
-  "16th century" : 1600,
-  "17th century" : 1700,
-  "18th century" : 1800,
-  "19th century" : 1900,
-  "20th century" : 2000,
-  "21th century" : 2100
-}
-
-for(var keys in centuryObj) {
-  if (num <= centuryObj[keys]){
-    accStr += keys;
-    break;
-  }
-  }
-return accStr
-}
+//look at results for highest value
 
 
 
 
 
 
-console.log(century(1756))// ➞ "18th century"
+countIdenticalArrays([0, 0, 0], [0, 1, 2], [0, 0, 0], [2, 1, 0]) ➞ 2
 
-console.log(century(1555))// ➞ "16th century"
+countIdenticalArrays([0, 1, 0], [0, 1, 2], [0, 2, 0], [2, 1, 0]) ➞ 0
 
-console.log(century(1000))// ➞ "10th century"
+countIdenticalArrays([0, 1, 2], [0, 1, 2], [0, 1, 2], [2, 1, 0]) ➞ 3
 
-console.log(century(1001))// ➞ "11th century"
 
-console.log(century(2005))// ➞ "21st century"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

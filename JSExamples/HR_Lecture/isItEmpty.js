@@ -1,5 +1,6 @@
 // Time limit 45 minutes
-// Write a function isItEmpty that takes in an object or an array and returns true if it is empty, false if not.
+// Write a function isItEmpty that takes in an object or an array and 
+//returns true if it is empty, false if not.
 // HINT: look up the Object.keys function
 
 function isItEmpty(obj){
