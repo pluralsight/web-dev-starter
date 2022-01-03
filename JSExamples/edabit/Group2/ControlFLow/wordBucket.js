@@ -1,29 +1,29 @@
-// function bucketize(phrase, n) {
-// 	let newPhraseArr = [];
-// 	let bucket = "";
+function bucketize(phrase, n) {
+	let newPhraseArr = [];
+	let bucket = "";
 	
-// 	for(let word of phrase.split(' ')){
-// 		if(word.length > n){
-// 			return [];
-// 		}
+	for(let word of phrase.split(' ')){
+		if(word.length > n){
+			return [];
+		}
 		
-// 		if(bucket.length + word.length < n){
-// 			if(bucket.length !== 0){
-// 				bucket += ' ';
-// 			}
-// 			bucket += word;
-// 		}
-// 		else{
-// 			if(bucket.length !== 0){
-// 				newPhraseArr.push(bucket);
-// 			}
-// 			bucket = word;
+		if(bucket.length + word.length < n){
+			if(bucket.length !== 0){
+				bucket += ' ';
+			}
+			bucket += word;
+		}
+		else{
+			if(bucket.length !== 0){
+				newPhraseArr.push(bucket);
+			}
+			bucket = word;
 				
-// 		}
-// 	}
-// 	newPhraseArr.push(bucket);
-// 	return newPhraseArr;
-// }
+		}
+	}
+	newPhraseArr.push(bucket);
+	return newPhraseArr;
+}
 
 // function bucketize(str, n) {
 //   //
@@ -45,21 +45,21 @@
     //return array
   
     //console.log(str.length, str[0], str[0].length, num - (str[0].length + 1))
-    while (str.length > 0){
-        if(num - (str[0].length) >= 0){
-          tempStr += str[0] + ' ';
-          num -= str[0].length + 1
-          str.splice(0,1)
-        } else {
-          accArr.push(tempStr.trim());
-          tempStr = '';
-          num = n
-        }
-      }
-    accArr.push(tempStr.trim())
-    return accArr
-    }
-    
+    // while (str.length > 0){
+    //     if(num - (str[0].length) >= 0){
+    //       tempStr += str[0] + ' ';
+    //       num -= str[0].length + 1
+    //       str.splice(0,1)
+    //     } else {
+    //       accArr.push(tempStr.trim());
+    //       tempStr = '';
+    //       num = n
+    //     }
+    //   }
+    // accArr.push(tempStr.trim())
+    // return accArr
+    // }
+
     
     
     

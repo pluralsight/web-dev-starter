@@ -112,9 +112,6 @@
 
 
 
-
-
-
 // //removeElement eductional exercise - Remove all lucky 7s
 // function removeElement (arr, target) {
 
