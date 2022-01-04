@@ -2,7 +2,32 @@
 
 // Example:
 
-
+//given an array, find two numbers that sum up to another number in array
+function magicSum(arr){
+    accArr = [];
+    for(let i = 0; i < arr.length; i++){  //seeker
+      for(let j = 0; j < arr.length; j++){  //base
+        if(i === j){
+          break
+        } else {
+          let sum = arr[j] + arr[i]
+          if(arr.indexOf(sum) !== -1){
+            accArr.push(arr[i], arr[j])
+            return accArr
+          }
+        }
+      }
+    }
+    
+    
+  return accArr;
+  }
+  
+  var array = [34, 88, 21, 75, 40, 13, 99]
+  var result = magicSum(array)
+  console.log(result)
+  
+  
 
 
 
