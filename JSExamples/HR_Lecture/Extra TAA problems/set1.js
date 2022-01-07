@@ -226,38 +226,38 @@ var coffeeRegions = [
     // //D- average, highest, and lowest
     //   //Return an object of the cheapest region, most expensive region, and average cost of coffee each coffee container rounded down to the nearest whole number
     
-    // function coffeePrices (arr) {
-    //   var cheapest = arr[0].regions[0];
-    //   var highest = arr[0].regions[0];
-    //   var totalLength = 0;
-    //   var accSum = 0;
+    function coffeePrices (arr) {
+      var cheapest = arr[0].regions[0];
+      var highest = arr[0].regions[0];
+      var totalLength = 0;
+      var accSum = 0;
     
-    //   for(let i = 0; i < arr.length; i++){
-    //     for (let k = 0; k < arr[i].regions.length; k++){
-    //       totalLength++
+      for(let i = 0; i < arr.length; i++){
+        for (let k = 0; k < arr[i].regions.length; k++){
+          totalLength++
     
-    //       if(arr[i].regions[k]["price per container"] < cheapest["price per container"]){
-    //         cheapest = arr[i].regions[k]
-    //       }
-    //       if(arr[i].regions[k]["price per container"] > highest["price per container"]){
-    //         highest = arr[i].regions[k]
-    //       }
-    //       accSum = arr[i].regions[k].containers * arr[i].regions[k]["price per container"]
+          if(arr[i].regions[k]["price per container"] < cheapest["price per container"]){
+            cheapest = arr[i].regions[k]
+          }
+          if(arr[i].regions[k]["price per container"] > highest["price per container"]){
+            highest = arr[i].regions[k]
+          }
+          accSum = arr[i].regions[k].containers * arr[i].regions[k]["price per container"]
     
-    //     }
-    //   }
+        }
+      }
     
-    //      var accObj = {
-    //         'cheapest region': cheapest.region, 
-    //         'most expensive region': highest.region, 
-    //         average: accSum/totalLength,
-    //       }
-    // console.log(cheapest, highest)
-    // return accObj
-    // }
+         var accObj = {
+            'cheapest region': cheapest.region, 
+            'most expensive region': highest.region, 
+            average: accSum/totalLength,
+          }
+    console.log(cheapest, highest)
+    return accObj
+    }
     
-    // var highLowAverage = coffeePrices(coffeeRegions);
-    // console.log('coffeePrices:', highLowAverage);
+    var highLowAverage = coffeePrices(coffeeRegions);
+    console.log('coffeePrices:', highLowAverage);
     
     
     
