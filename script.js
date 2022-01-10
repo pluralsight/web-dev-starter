@@ -1,10 +1,193 @@
-// 
+const companies = [
+  {name: "Company One", category: "Finance", start: 1981, end: 2003},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+// for(let i = 0; i < companies.length; i++){
+//   console.log(companies[i])
+// }
+
+//forEach
+accArr = [];
+companies.forEach(function(comp) {
+  //console.log(comp)
+  if(comp.category === 'Retail' && comp.start > 1981){
+    accArr.push(comp)
+  }
+  // accArr.push(comp)
+  // console.log(accArr)
+  // console.log(comp)
+});
+//console.log(accArr)
+
+
+
+//filter
+//let accArrFilter = [];
+// for(let i = 0; i < ages.length; i++){
+//   if(ages[i] >= 21){
+//     accArrFilter.push(ages[i])
+//   }
+// }
+// console.log(accArrFilter)
+const accArrFilter = ages.filter(function(a){
+  // if(a >= 21){
+  //   return true;
+  return (a >= 21)
+  
+});
+//console.log(accArrFilter)
+
+const retailCompanies = companies.filter(function(c){
+  return (c.category === 'Retail')
+});
+
+//console.log(retailCompanies)
+
+const eightiesCompanies = companies.filter(function(c){
+  if(c.start > 1979 && c.start < 1990){
+    return true
+  }
+});
+//console.log(eightiesCompanies)
+
+const tenYearComp = companies.filter(function(c){
+  return (c.end - c.start >= 10)
+});
+//console.log(tenYearComp)
+
+
+//map
+const compNames = companies.map(function(c){
+  return ([`Company: ${c.name}, Years in Business: ${(c.end - c.start)}`]);
+});
+console.log(compNames)
 
 
 
 
 
 
+//sort
+
+//reduce
+
+
+
+
+
+
+
+
+
+
+
+
+// function filter(array, callbackFunction) {
+//   return array.filter(callbackFunction);
+// }
+
+// //Here is an example to get a sense of what filter should do.
+
+// var input = [1, 2, 3, 4];
+// var output = filter(input, function(value) {
+//   //return value % 2 === 0;
+//   if(value % 2 === 0){
+//     return false;
+//   } else {
+//     return true
+//   }
+
+// })
+
+// console.log(output); // [2, 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var data = [
+//   {id: 1, firstName: "Ryan", lastName: "Guill", email: "ryanguill@gmail.com"},
+//   {id: 2, firstName: "John", lastName: "Doe", email: "johndoe@example.com"},
+//   {id: 3, firstName: "Mary", lastName: "Smith", email: "marysmith@example.com"}
+// ];
+
+// var toFieldFormat = function(item) {
+//   return item.firstName + " " + item.lastName + " <" + item.email + ">"; 
+// };
+
+// var newData = data.map(toFieldFormat);
+// //console.log(newData)
+
+// var newData = data.map(function(value) {
+//     return `${value.firstName} ${value.lastName} <${value.email}>`
+// });
+
+// //console.log('#@#@#@#@#@#@#2', newData)
+
+
+// function map(array, callbackFunction) {
+//   var accArr = []
+//   for(let i = 0; i < array.length; i++){
+//     accArr.push(callbackFunction(array[i]))
+//   }
+// return accArr;
+// }
+
+// function someNewFunction(value){
+//   return `${value.firstName} ${value.lastName} <${value.email}>`
+// }
+
+
+// var result = map(data, someNewFunction)
+// console.log(result)
 
 
 
