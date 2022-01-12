@@ -71,7 +71,11 @@ return ratingsObj;
 
 }
 
-
+var ratingsObj = {
+    best : best.name,
+    good : good,
+    ave : ratings/town.length
+}
 
 var result = restaurantRating(myTown);
 console.log (result)
