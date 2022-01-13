@@ -1,3 +1,69 @@
+
+  var products;
+
+    products = [
+      { name: 'Sonoma', ingredients: ['artichoke', 'sundried tomatoes', 'mushrooms'], containsNuts: false },
+      { name: 'Pizza Primavera', ingredients: ['roma', 'sundried tomatoes', 'goats cheese', 'rosemary'], containsNuts: false },
+      { name: 'South Of The Border', ingredients: ['black beans', 'jalapenos', 'mushrooms'], containsNuts: false },
+      { name: 'Blue Moon', ingredients: ['blue cheese', 'garlic', 'walnuts'], containsNuts: true },
+      { name: 'Taste Of Athens', ingredients: ['spinach', 'kalamata olives', 'sesame seeds'], containsNuts: true }
+    ];
+
+
+  /*********************************************************************************/
+
+    var i, j, hasMushrooms;
+    var productsICanEat = [];
+
+    for (i = 0; i < products.length; i += 1) {
+      if (products[i].containsNuts === false) {
+        hasMushrooms = false;
+        for (j = 0; j < products[i].ingredients.length; j += 1) {
+          if (products[i].ingredients[j] === 'mushrooms') {
+            hasMushrooms = true;
+          }
+        }
+        if (!hasMushrooms) {
+          productsICanEat.push(products[i]);
+        }
+      }
+    }
+
+
+    var productsICanEat = [];
+
+
+
+
+    /* solve using filter() & every() / some() */
+    productsICanEat = products.filter(function(el){
+      if (el.containsNuts === false){
+        return true
+      }
+
+
+    });
+    console.log(productsICanEat)
+    //can use every inside filter function
+
+    // const food = _(products).chain()
+    //   .filter(function(a){ if (a.containsNuts === false) {return true}});
+    //   console.log(food)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 const companies = [
   {name: "Company One", category: "Finance", start: 1981, end: 2003},
@@ -145,7 +211,7 @@ console.log(allNames)
 
 
 */
-
+/*
 
 //A civilized guide to JS array methods (pdf)
 //Documents/HackReactor/
@@ -274,7 +340,7 @@ const aveHeroStr = heroes.reduce(function(acc, item, index){
 },0)/heroes.length;
 console.log(aveHeroStr)
 
-
+ */
  /*
 
 
