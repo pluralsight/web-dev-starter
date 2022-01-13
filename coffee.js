@@ -72,7 +72,7 @@ var allStars = [{
 //A) Your scouting manager only wants you to pay attention to players who score at least 20 points per game. Create a function that returns an array of player names who fit this description.
 
 var highScoringPlayersA = function(players){
-    
+
 }
 
 //B) Right now your function looks for only players with 20 points per game. Modify your function such that it takes in a target number and filters accordingly.
@@ -111,19 +111,19 @@ Let's get started!
 
 //2) -------------------------------------
 
-// coffee company - you work for a coffee wholesaler. They are asking you to report from the data below about recent shipments. 
+// coffee company - you work for a coffee wholesaler. They are asking you to report from the data below about recent shipments.
 
 var coffeeRegions = [
   {
     country: 'Brazil',
     regions: [
       {
-        region:'Bahia', 
+        region:'Bahia',
         containers: 2,
         "price per container": 1200
       },
       {
-        region:'São Paulo', 
+        region:'São Paulo',
         containers: 1,
         "price per container": 1350,
       },
@@ -133,12 +133,12 @@ var coffeeRegions = [
     country: 'Ethiopia',
     regions: [
       {
-        region:'Yirgacheffe', 
+        region:'Yirgacheffe',
         containers: 4,
         "price per container": 1300,
       },
       {
-        region:'Sidamo', 
+        region:'Sidamo',
         containers: 2,
         "price per container": 1250,
       },
@@ -148,12 +148,12 @@ var coffeeRegions = [
     country: 'Indonesia',
     regions: [
       {
-        region:'Sumatra', 
+        region:'Sumatra',
         containers: 5,
         "price per container": 1100,
       },
     ]
-  }  
+  }
 ]
 
 //A)
@@ -201,7 +201,7 @@ var answer = totalCountriesAndRegions(coffeeRegions);
 
 //C total spent
   //**continue to use the data from problem 1
-  //Write a funtion 'total spent' that calculates the total spent for all coffee. 
+  //Write a funtion 'total spent' that calculates the total spent for all coffee.
   //**the amount of containers purchased is the value of the 'containers' property
 
   function totalSpent(arr) {
@@ -224,10 +224,10 @@ var answer = totalCountriesAndRegions(coffeeRegions);
 
   var highLowAverage = coffeePrices(coffeeRegions);
   // console.log('coffeePrices:', highLowAverage);
-    /* 
+    /*
         {
-          'cheapest region': 'Sumatra', 
-          'most expensive region': 'São Paulo', 
+          'cheapest region': 'Sumatra',
+          'most expensive region': 'São Paulo',
           average: 1210,
         }
     */
@@ -253,15 +253,15 @@ var answer = totalCountriesAndRegions(coffeeRegions);
 
 var eatingHabits = [
   {
-    day: 'Monday', 
+    day: 'Monday',
     food: ['banana', 'ice cream', 'apple', 'leaf', 'cheese']
   },
   {
-    day: 'Tuesday',  
+    day: 'Tuesday',
     food: ['candy', 'cake', 'ice cream', 'cheese'],
   },
   {
-    day: 'Wednesday', 
+    day: 'Wednesday',
     food: ['leaf', 'cheese', 'jelly', 'hamburger'],
   },
   {
@@ -368,14 +368,14 @@ var soccerPlayers = [
 ]
 
 
- 
+
 function averageScore(arr, name) {
-  
+
 }
 
-// console.log(averageScore(soccerPlayers, 'Jess')); // ==> 3 
+// console.log(averageScore(soccerPlayers, 'Jess')); // ==> 3
 
-//console.log(averageScore(soccerPlayers, 'Tyler')); // ==> 2.67 
+//console.log(averageScore(soccerPlayers, 'Tyler')); // ==> 2.67
 
 
 
@@ -387,7 +387,7 @@ function averageScore(arr, name) {
 //not finished!!!
 
 /* FIND THIRD LARGEST VALUE IN AN ARRAY OF OBJECTS */
-//take an array of movie objects and return the third highest rotten tomato rating as a percentage and the release Year 
+//take an array of movie objects and return the third highest rotten tomato rating as a percentage and the release Year
 
 function thirdTopRatedMovie (arr){
 
@@ -405,6 +405,6 @@ var starWars = [
   {title: 'Episode IV: The Rise of Skywalker', releaseYear: 2019, rating: 0.51},
   {title: 'Rogue One: A Star Wars Story', releaseYear: 2016, rating: 0.84},
   {title: 'Solo: A Star Wars Story', releaseYear: 2018, rating: 0.70}
-]; 
+];
 
 console.log(thirdTopRatedMovie(starWars))
