@@ -162,7 +162,8 @@ const heroes = [
   {name: 'Namora', strength: 75000},
   {name: 'Captain America', strength: 362},
   {name: 'Deadpool', strength: 1814},
-  {name: 'Black Panther', strength: 1814},
+  //{name: 'Black Panther', strength: 1814},
+  {name: 'Black Panther'}
  ];
 
 //FIND                                 FIND
@@ -230,31 +231,51 @@ function sumStrength(total, hero) {
   //console.log(total, hero.strength)
   return total + hero.stength;
  }
- function sumStrLoop (arr){
-   var sumTotal = 0;
-   for(let i = 0; i < arr.length; i++){
-     //console.log(arr[i].strength)
-     sumTotal += arr[i].strength
-   }
-   return sumTotal
- }
 
+//  function sumStrLoop (arr){
+//    var sumTotal = 0;
+//    for(let i = 0; i < arr.length; i++){
+//      //console.log(arr[i].strength)
+//      sumTotal += arr[i].strength
+//    }
+//    return sumTotal
+//  }
+//console.log(sumStrLoop(heroes))
 
-
-console.log(sumStrLoop(heroes))
-
- const totalStength2 = heroes.reduce(
+const totalStength2 = heroes.reduce(
   sumStrength,
   0
  );
+//  console.log(totalStength2)
 
- //console.log(totalStength2)
-// const strSum = heroes.reduce(function(total, hero){
-//   console.log(total, hero.strength)
-//   return total + hero.strength
-// },0)
-// console.log(strSum)
-/*
+
+
+const strSum = heroes
+.filter(function(el){
+  if (el.strength){
+  return el
+  }
+})
+.reduce(function(total, hero){
+   return total + hero.strength
+ },0)
+console.log(strSum)
+
+
+
+
+
+
+//average hero strength
+const aveHeroStr = heroes.reduce(function(acc, item, index){
+  return acc + item.strength
+
+
+},0)/heroes.length;
+console.log(aveHeroStr)
+
+
+ /*
 
 
 
