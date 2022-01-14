@@ -58,20 +58,20 @@
 //least 20 points per game. Create a function that returns an array of player names
 //who fit this description.
 
-var highScore = allStars.filter(function(el){
-  if(el.pointsPerGame >= 25){
-    return el
-  }
-}).map(function(el){
-  return {
-    [el.name] : (el.pointsPerGame)
-  }
-}).map(function(el){
-  return Object.values(el)
-}).flat().join(', ')
+// var highScore = allStars.filter(function(el){
+//   if(el.pointsPerGame >= 25){
+//     return el
+//   }
+// }).map(function(el){
+//   return {
+//     [el.name] : (el.pointsPerGame)
+//   }
+// }).map(function(el){
+//   return Object.values(el)
+// }).flat().join(', ')
 
 
-console.log(highScore)
+// console.log(highScore)
 
 //var highScoringPlayers = function(players){
 
@@ -84,20 +84,20 @@ console.log(highScore)
 //sorting function
 
 
-var highScoringPlayers = function(arr, num){
-   return arr.sort(function(a,b){
-    return (b.pointsPerGame - a.pointsPerGame)
-  }).filter(function(el){
-     //return sortHelper(el.pointsPerGame, num)
-     return el.pointsPerGame > num
-   }).map(function(el){
-     return el
-   }).map(function(el){
-     return el.name
-   })
-}
+// var highScoringPlayers = function(arr, num){
+//    return arr.sort(function(a,b){
+//     return (b.pointsPerGame - a.pointsPerGame)
+//   }).filter(function(el){
+//      //return sortHelper(el.pointsPerGame, num)
+//      return el.pointsPerGame > num
+//    }).map(function(el){
+//      return el
+//    }).map(function(el){
+//      return el.name
+//    })
+// }
 
-console.log(highScoringPlayers(allStars, 13)); //returns a list of all-stars who get an
+// console.log(highScoringPlayers(allStars, 13)); //returns a list of all-stars who get an
 //average of at least 13 points per game.
 
 
@@ -105,19 +105,19 @@ console.log(highScoringPlayers(allStars, 13)); //returns a list of all-stars who
 
 //C) Modify your function to take in a third argument that indicates which
 //property you are interested in, and returns a filtered array based on this.
-var myFilteredArray = function (arr, pts, as){
-  return arr.sort(function(a, b){
-    return b.pointsPerGame - a.pointsPerGame;
-  }).filter(function(el){
-    if(el.pointsPerGame > pts && el.assistsPerGame > as){
-      return el
-    }
-  }).map(function(el){
-    return el.name
-  }).join(', ')
-}
+// var myFilteredArray = function (arr, pts, as){
+//   return arr.sort(function(a, b){
+//     return b.pointsPerGame - a.pointsPerGame;
+//   }).filter(function(el){
+//     if(el.pointsPerGame > pts && el.assistsPerGame > as){
+//       return el
+//     }
+//   }).map(function(el){
+//     return el.name
+//   }).join(', ')
+// }
 
-console.log(myFilteredArray(allStars, 13, 6))
+// console.log(myFilteredArray(allStars, 13, 6))
 
 
 
@@ -138,53 +138,54 @@ console.log(myFilteredArray(allStars, 13, 6))
     ];
 
 //filter ... every ... includes
-var listAllSun = function(arr){
-  return arr.filter(function(el){
-    el.ingredients.some(function(ev){
-       console.log(ev)
-       if (ev.indexOf('sundried') !== -1){
-       return el.ingredients
-       }
-      })
-    })
-  }
+// var listAllSun = function(arr){
+//   return arr.filter(function(el){
+//     el.ingredients.some(function(ev){
+//        console.log(ev)
+//        if (ev.indexOf('sundried') !== -1){
+//        return el.ingredients
+//        }
+//       })
+//     })
+//   }
 
-console.log(listAllSun(products))
+
+
+//console.log(listAllSun(products))
 
   /*********************************************************************************/
 
-    var i, j, hasMushrooms;
-    var productsICanEat = [];
+    // var i, j, hasMushrooms;
+    // var productsICanEat = [];
 
-    for (i = 0; i < products.length; i += 1) {
-      if (products[i].containsNuts === false) {
-        hasMushrooms = false;
-        for (j = 0; j < products[i].ingredients.length; j += 1) {
-          if (products[i].ingredients[j] === 'mushrooms') {
-            hasMushrooms = true;
-          }
-        }
-        if (!hasMushrooms) {
-          productsICanEat.push(products[i]);
-        }
-      }
-    }
+    // for (i = 0; i < products.length; i += 1) {
+    //   if (products[i].containsNuts === false) {
+    //     hasMushrooms = false;
+    //     for (j = 0; j < products[i].ingredients.length; j += 1) {
+    //       if (products[i].ingredients[j] === 'mushrooms') {
+    //         hasMushrooms = true;
+    //       }
+    //     }
+    //     if (!hasMushrooms) {
+    //       productsICanEat.push(products[i]);
+    //     }
+    //   }
+    // }
 
 
-    var productsICanEat = [];
+    // var productsICanEat = [];
 
 
 
 
     /* solve using filter() & every() / some() */
-    productsICanEat = products.filter(function(el){
-      if (el.containsNuts === false){
-        return true
-      }
+    productsICanEat = products.push(products.filter(function(el){
+        return el.ingredients.every(function(e){
+          return e !== 'mushrooms'
+        }) && el.containsNuts === false;
+    }))
 
-
-    });
-    //console.log(productsICanEat)
+    console.log(productsICanEat)
     //can use every inside filter function
 
     // const food = _(products).chain()
