@@ -1,3 +1,12 @@
+IOCE
+Strategy
+Write Tests (Most of the assignments in Precourse have pre-written tests)
+Pseudocode
+Code
+Refactor - In order to have clean code, consistent code that improves the design and structure without modifying any functionalty of the program.
+
+
+
 
 
 
