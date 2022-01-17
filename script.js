@@ -1,3 +1,75 @@
+// Produce a duplicate-free version of the array. If the array has already
+  // been sorted, you have the option of using a faster algorithm.
+  // The faster algorithm will not work with an iteratee if the iteratee
+  // is not a one-to-one function, so providing an iteratee will disable
+  // the faster algorithm.
+  function uniq(array, isSorted, iteratee, context) {
+    if (!isBoolean(isSorted)) {
+      context = iteratee;
+      iteratee = isSorted;
+      isSorted = false;
+    }
+    if (iteratee != null) iteratee = cb(iteratee, context);
+    var result = [];
+    var seen = [];
+    for (var i = 0, length = getLength(array); i < length; i++) {
+      var value = array[i],
+          computed = iteratee ? iteratee(value, i, array) : value;
+      if (isSorted && !iteratee) {
+        if (!i || seen !== computed) result.push(value);
+        seen = computed;
+      } else if (iteratee) {
+        if (!contains(seen, computed)) {
+          seen.push(computed);
+          result.push(value);
+        }
+      } else if (!contains(result, value)) {
+        result.push(value);
+      }
+    }
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var x13Will = function(cookieAction, cookiesImpacted) {
+  x13sTotalCookies = cookieAction(x13sTotalCookies, cookiesImpacted);
+};
+
+
+
+var x13sTotalCookies = 5;
+x13Will(function(currentTotal) {
+  // since each cookie broke in half and we're now
+  // counting each half piece as a whole, we just
+  // double the total number of cookies...
+  // good thing X13 doesn't have a `sellCookies` function
+  return currentTotal * 2;
+});
+console.log(x13sTotalCookies)
+
+
+
+
+
+
 
 
 
@@ -173,27 +245,58 @@
     // }
 
 
-    // var productsICanEat = [];
+    var productsICanEat = [];
 
 
 
 
     /* solve using filter() & every() / some() */
-    productsICanEat = products.push(products.filter(function(el){
-        return el.ingredients.every(function(e){
-          return e !== 'mushrooms'
-        }) && el.containsNuts === false;
-    }))
+    // productsICanEat = products.push(products.filter(function(el){
+    //     return el.ingredients.every(function(e){
+    //       return e !== 'mushrooms'
+    //     }) && el.containsNuts === false;
+    // }))
 
-    console.log(productsICanEat)
+
+    var counter = 0
+    var nutlessPizza = products.filter(function(el){
+      //return el.containsNuts === false;
+      if(el.containsNuts === false){
+        return el
+      }
+    }).map(function(el){
+      //console.log('map', el.ingredients)
+      return el.ingredients
+    }).some(function(ele){
+      //console.log(ele)
+      if(ele !== 'mushroom'){
+        //console.log(ele)
+        }
+
+    })
+
+
+    //console.log(nutlessPizza)
+    //console.log(productsICanEat)
     //can use every inside filter function
 
     // const food = _(products).chain()
     //   .filter(function(a){ if (a.containsNuts === false) {return true}});
     //   console.log(food)
+var range = []
+for (let i = 0; i < 1000; i++){
+  range.push(i)
+}
+//console.log(range)
+var result = range.filter(function(ele){
+  return ele % 2 === 0
+})
+//console.log(result)
 
-
-
+// var total = 0;
+// var result =
+//   range.filter(item => item % 3 === 0 || item % 5 === 0)
+// .reduce((total, num) => total += num);
 
 
 
