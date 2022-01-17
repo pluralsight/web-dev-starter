@@ -257,6 +257,7 @@ console.log(x13sTotalCookies)
     //     }) && el.containsNuts === false;
     // }))
 
+<<<<<<< HEAD
 
     var counter = 0
     var nutlessPizza = products.filter(function(el){
@@ -277,7 +278,10 @@ console.log(x13sTotalCookies)
 
 
     //console.log(nutlessPizza)
+=======
+>>>>>>> 3f047e68dfa136f19593e9a6084cdffc7816363b
     //console.log(productsICanEat)
+
     //can use every inside filter function
 
     // const food = _(products).chain()
