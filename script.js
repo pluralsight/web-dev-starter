@@ -30,13 +30,12 @@ var test = _.each(people, function(el, ind, ar){
   // newArr.push(el)
 
 })
-console.log(newObj)
+//console.log(newObj)
 
 //indexOF  ///////////////////////////////////
 _.indexOf = function(array, target){
   var result = -1;
     _.each(array, function(item, index) {
-      console.log(item, index, result)
       if(item === target && result === -1) {
         result = index;
       }
@@ -133,7 +132,7 @@ var isOne = function(value) { return value === 1; };
 // var result = _.uniq(numbers, true, roundNumber);
 // console.log(result)
 var result2 = _.uniq(otherNumbers, false, isOne);
-console.log(result2)
+//console.log(result2)
 //expect(_.uniq(numbers, true, roundNumber)).to.eql([11.2, 11.9, 12.6]);
 //expect(_.uniq(otherNumbers, false, isOne)).to.eql([1, 2]);
 
@@ -224,13 +223,13 @@ _.pluck = function(collection, key){
   var result = _.reduce([1, 2, 3], function(memo) {
     return memo;
   });
-  console.log(result)
+  //console.log(result)
   //expect(result).to.equal(1);
 
   var result = _.reduce([3, 2, 1], function(memo, item) {
     return memo - item;
   }, 10);
-  console.log(result)
+  //console.log(result)
   //4
 
 
