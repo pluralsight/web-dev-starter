@@ -61,6 +61,6 @@ var detectNetwork = function(cardNumber) {
           return cardData[i].network;
         }
     }
-    
+
   }
 };
