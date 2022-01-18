@@ -57,6 +57,16 @@ return result;
 
 /////////////////////////////////////////////
 
+// _.reject = function(collection, test) {
+//   return _.filter(collection, _.negate(test))
+// };
+
+// _.negate = function (predicate) {
+//   return function () {
+//     return !predicate.apply(this, arguments)
+//   };
+// }
+
 //reject ///////////////////////////////////
 
 _.reject = function(collection, test) {
@@ -250,6 +260,48 @@ _.pluck = function(collection, key){
 
 
 
+    var desserts = [
+      {
+        name: 'Chocolate Cake',
+        ingredients: ['cocoa', 'flour', 'sugar', 'eggs', 'milk', 'butter' ],
+        type: 'cake'
+      },
+      {
+        name: 'Snickerdoodles',
+        ingredients: ['flour', 'milk', 'butter', 'eggs', 'sugar', 'cinnamon', 'cream of tartar'],
+        type: 'cookie'
+      },
+      {
+        name: 'Strawberry-Rhubarb Pie',
+        ingredients: ['flour', 'water', 'eggs', 'sugar', 'strawberries', 'rhubarb'],
+        type: 'pie'
+      },
+      {
+        name: 'Lemonade',
+        ingredients: ['water', 'sugar', 'lemons'],
+        type: 'drink'
+      },
+      {
+        name: 'Chocolate Chip Cookies',
+        ingredients: ['flour', 'butter', 'sugar', 'eggs', 'chocolate chips'],
+        type: 'cookie'
+      },
+      {
+        name: 'Apple Pie',
+        ingredients: ['flour', 'water', 'cinnamon', 'apples', 'sugar'],
+        type: 'pie'
+      },
+      {
+        name: 'Apple Pie',
+        ingredients: ['flour', 'water', 'cinnamon', 'apples', 'sugar'],
+        type: 'pie'
+      },
+      {
+        name: 'Angel Food Cake',
+        ingredients: ['flour', 'eggs', 'sugar', 'cream of tartar'],
+        type: 'cake'
+      }
+    ];
 
 
 
@@ -266,6 +318,62 @@ _.pluck = function(collection, key){
 
 
 
+    var glutenFree = function(desserts) {
+
+      var result = _.map(desserts, function(item, index, array){
+        if(item.ingredients.indexOf('flour') === -1) {
+
+          item['glutenFree'] = true;
+          console.log(item['glutenFree'], item)
+          return item
+          } else {
+
+            item['glutenFree'] = false;
+            console.log(item['glutenFree'], item)
+
+            return item
+          }
+        })
+    return result;
+      };
+
+      //console.log(glutenFree(desserts))
+
+
+
+
+
+
+      var fruits = [
+        'apple',
+        'banana',
+        'strawberry',
+        'starfruit',
+        'pear',
+        'lemon',
+        'lime,',
+        'blueberry',
+        'cherry',
+        'apricot',
+        'blackberry',
+        'coconut',
+        'grape',
+        'orange',
+        'pineapple',
+        'peach',
+        'papaya'
+      ];
+
+
+
+      var upperCaseFruits = function(fruits) {
+
+        var result = _.map(fruits, function(item, index, array){
+          return item.toUpperCase()
+        });
+        return result
+      };
+console.log(upperCaseFruits(fruits))
 
 
 
@@ -275,25 +383,24 @@ _.pluck = function(collection, key){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      var blah = function() {
+        var counter = 0;
+        var num = 20;
+        var isGood = false;
+        while (!isGood) {
+          for (var i = 1; i <= 20; i++) {
+            if (num % i === 0) {
+              counter++;
+            }
+          }
+          if (counter === 20) {
+            isGood = true;
+          }
+          counter = 0;
+          num++;
+        }
+        return num;
+      };
 
 
 
@@ -456,7 +563,7 @@ _.pluck = function(collection, key){
 
 
 
-*/
+
 
 
 

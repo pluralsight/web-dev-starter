@@ -70,6 +70,17 @@ _.reject = function(collection, test) {
 return result;
 };
 //////////////////////////////////////////////
+//OPTIONAL REJECT WITH NEGATE
+
+// _.reject = function(collection, test) {
+//   return _.filter(collection, _.negate(test))
+// };
+
+// _.negate = function (predicate) {
+//   return function () {
+//     return !predicate.apply(this, arguments)
+//   };
+// }
 
 // uniq //////////////////////////////////////
 // _.uniq = function(array, iterator){

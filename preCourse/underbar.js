@@ -136,9 +136,7 @@
   //return result
 
   _.indexOf = function(array, target) {
-    // TIP: Here's an example of a function that needs to iterate, which we've
-    // implemented for you. Instead of using a standard `for` loop, though,
-    // it uses the iteration helper `each`, which you will need to write.
+
     var result = -1;
 
     _.each(array, function(item, index) {
@@ -166,6 +164,7 @@
   //return result
 
   // Return all elements of an array that pass a truth test.
+
   _.filter = function(collection, test) {
     var result = [];
     _.each(collection, function (item) {
@@ -173,11 +172,6 @@
         result.push(item);
       }
     });
-    // for (var i = 0; i < collection.length; i++) {
-    //   if(test(collection[i])) {
-    //     result.push(collection[i])
-    //   }
-    // }
     return result;
   };
 
@@ -190,25 +184,23 @@
 
   //pseudocoding
   //create a new result variable
-  //for each item in the collection
-    //if current item failes truth test function
-      //push current item into result array
+  //filter each element in the collection
+    //if current element fails truth test function
+      //push current element into result array
   //return result
-
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
-    // TIP: see if you can re-use _.filter() here, without simply
-    // copying code in and modifying it
-
     var result = [];
-    _.each(collection, function(item) {
-      if (!test(item)) {
-        result.push(item);
+
+    _.filter(collection, function (element) {
+      if (!test(element)) {
+        result.push(element);
       }
     });
     return result;
   };
+
 
   // Produce a duplicate-free version of the array.
 
