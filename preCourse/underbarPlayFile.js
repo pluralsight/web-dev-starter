@@ -262,3 +262,14 @@ _.pluck = function(collection, key){
 
 
 
+_.identity = function (val) {
+  return (val);
+};
+
+_.first = function (array, n) {
+  return n === undefined ? array[0] : array.slice(0,n);
+};
+
+_.last = functoin (array, n) {
+  if (n < = 0) {return []; }
+}

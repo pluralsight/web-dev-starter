@@ -295,7 +295,7 @@ _.pluck = function(collection, key){
         });
         return result
       };
-console.log(upperCaseFruits(fruits))
+//console.log(upperCaseFruits(fruits))
 
 
 
@@ -323,6 +323,139 @@ console.log(upperCaseFruits(fruits))
         }
         return num;
       };
+
+
+
+
+      var groceries = [
+        {
+          id: 1,
+          product: 'Olive Oil',
+          price: '$' + 12.1
+        },
+        {
+          id: 2,
+          product: 'Tomato Soup',
+          price: '$' + 3.48
+        },
+        {
+          id: 3,
+          product: 'Cheesecake',
+          price: '$' + 17.36
+        },
+        {
+          id: 4,
+          product: 'Sirloin Steak',
+          price: '$' + 14.8
+        },
+        {
+          id: 5,
+          product: 'Brie Cheese',
+          price: '$' + 23.28
+        },
+        {
+          id: 6,
+          product: 'Ground Beef',
+          price: '$' + 1.44
+        },
+        {
+          id: 7,
+          product: 'Tofu',
+          price: '$' + 11.11
+        },
+        {
+          id: 8,
+          product: 'Lentils',
+          price: '$' + 21.77
+        },
+        {
+          id: 9,
+          product: 'Cola, 12pk',
+          price: '$' + 22.58
+        },
+        {
+          id: 10,
+          product: 'Skittles',
+          price: '$' + 3.79
+        },
+        {
+          id: 11,
+          product: 'Flour - White',
+          price: '$' + 5.59
+        },
+        {
+          id: 12,
+          product: 'Sauce - Pizza',
+          price: '$' + 9.23
+        },
+        {
+          id: 13,
+          product: 'Whole Milk, Gallon',
+          price: '$' + 6.43
+        },
+        {
+          id: 14,
+          product: 'Butter',
+          price: '$' + 5.11
+        },
+        {
+          id: 15,
+          product: 'Bread - Wheat',
+          price: '$' + 15.91
+        },
+      ];
+
+
+
+
+
+
+
+
+
+      var applyCoupon = function(groceries, coupon) {
+        //console.log(groceries)
+
+       return _.map(groceries, function(el){
+          var num1 = parseFloat(el.price.slice(1))
+          if(!coupon){coupon = 0}
+          console.log(coupon, num1, (num1 - (num1 * coupon)).toFixed(2))
+
+          return el.salePrice = `$${(num1 - (num1 * coupon)).toFixed(2)}`
+
+        });
+        console.log(result)
+      };
+      applyCoupon(groceries, .2)
+      console.log(groceries)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
