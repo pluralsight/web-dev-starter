@@ -414,20 +414,17 @@ _.pluck = function(collection, key){
 
 
       var applyCoupon = function(groceries, coupon) {
-        //console.log(groceries)
+        console.log(groceries)
 
        return _.map(groceries, function(el){
           var num1 = parseFloat(el.price.slice(1))
           if(!coupon){coupon = 0}
-          console.log(coupon, num1, (num1 - (num1 * coupon)).toFixed(2))
-
           return el.salePrice = `$${(num1 - (num1 * coupon)).toFixed(2)}`
-
         });
-        console.log(result)
       };
       applyCoupon(groceries, .2)
-      console.log(groceries)
+      // console.log(groceries)
+
 
 
 
