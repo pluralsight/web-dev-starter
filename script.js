@@ -141,7 +141,7 @@ var roundNumber = function(number) { return Math.round(number); };
 var isOne = function(value) { return value === 1; };
 // var result = _.uniq(numbers, true, roundNumber);
 // console.log(result)
-var result2 = _.uniq(otherNumbers, false, isOne);
+var result3 = _.uniq(otherNumbers, false, isOne);
 //console.log(result2)
 //expect(_.uniq(numbers, true, roundNumber)).to.eql([11.2, 11.9, 12.6]);
 //expect(_.uniq(otherNumbers, false, isOne)).to.eql([1, 2]);
@@ -230,13 +230,13 @@ _.pluck = function(collection, key){
   }
 
 
-  var result = _.reduce([1, 2, 3], function(memo) {
+  var result5 = _.reduce([1, 2, 3], function(memo) {
     return memo;
   });
   //console.log(result)
   //expect(result).to.equal(1);
 
-  var result = _.reduce([3, 2, 1], function(memo, item) {
+  var result6 = _.reduce([3, 2, 1], function(memo, item) {
     return memo - item;
   }, 10);
   //console.log(result)
@@ -414,7 +414,7 @@ _.pluck = function(collection, key){
 
 
       var applyCoupon = function(groceries, coupon) {
-        console.log(groceries)
+        //console.log(groceries)
 
        return _.map(groceries, function(el){
           var num1 = parseFloat(el.price.slice(1))
@@ -473,127 +473,20 @@ _.pluck = function(collection, key){
 
 
 
- var allStars = [{
-  name: "Dwyane Wade",
-  pointsPerGame: 23.7,
-  assistsPerGame: 5.8,
-  reboundsPerGame: 4.8
-}, {
-  name: "Kyle Lowry",
-  pointsPerGame: 13.5,
-  assistsPerGame: 5.7,
-  reboundsPerGame: 4.0
-}, {
-  name: "LeBron James",
-  pointsPerGame: 27.2,
-  assistsPerGame: 6.9,
-  reboundsPerGame: 7.2
-}, {
-  name: "Paul George",
-  pointsPerGame: 16.9,
-  assistsPerGame: 3.1,
-  reboundsPerGame: 6.2
-}, {
-  name: "Carmelo Anthony",
-  pointsPerGame: 24.9,
-  assistsPerGame: 3.2,
-  reboundsPerGame: 6.6
-}, {
-  name: "Stephen Curry",
-  pointsPerGame: 22.4,
-  assistsPerGame: 6.9,
-  reboundsPerGame: 4.3
-}, {
-  name: "Russell Westbrook",
-  pointsPerGame: 21.5,
-  assistsPerGame: 2.6,
-  reboundsPerGame: 5.6
-}, {
-  name: "Kobe Bryant",
-  pointsPerGame: 25.0,
-  assistsPerGame: 4.7,
-  reboundsPerGame: 5.2
-}, {
-  name: "Kevin Durant",
-  pointsPerGame: 25.6,
-  assistsPerGame: 2.9,
-  reboundsPerGame: 5.6
-}, {
-  name: "Kawhi Leonard",
-  pointsPerGame: 14.3,
-  assistsPerGame: 2.0,
-  reboundsPerGame: 6.3
-}
-]
-//A) Your scouting manager only wants you to pay attention to players who score at
-//least 20 points per game. Create a function that returns an array of player names
-//who fit this description.
-
-// var highScore = allStars.filter(function(el){
-//   if(el.pointsPerGame >= 25){
-//     return el
-//   }
-// }).map(function(el){
-//   return {
-//     [el.name] : (el.pointsPerGame)
-//   }
-// }).map(function(el){
-//   return Object.values(el)
-// }).flat().join(', ')
-
-
-// console.log(highScore)
-
-//var highScoringPlayers = function(players){
-
-//}
-
-//B) Right now your function looks for only players with 20 points per game.
-//Modify your function such that it takes in a target number and filters
-//accordingly.
-
-//sorting function
-
-
-// var highScoringPlayers = function(arr, num){
-//    return arr.sort(function(a,b){
-//     return (b.pointsPerGame - a.pointsPerGame)
-//   }).filter(function(el){
-//      //return sortHelper(el.pointsPerGame, num)
-//      return el.pointsPerGame > num
-//    }).map(function(el){
-//      return el
-//    }).map(function(el){
-//      return el.name
-//    })
-// }
-
-// console.log(highScoringPlayers(allStars, 13)); //returns a list of all-stars who get an
-//average of at least 13 points per game.
 
 
 
+var my_object = {
+  '0': 'zero',
+  '1': 'one',
+  '2': 'two',
+  '3': 'three',
+  '4': 'four',
+  length: 5
+};
 
-//C) Modify your function to take in a third argument that indicates which
-//property you are interested in, and returns a filtered array based on this.
-// var myFilteredArray = function (arr, pts, as){
-//   return arr.sort(function(a, b){
-//     return b.pointsPerGame - a.pointsPerGame;
-//   }).filter(function(el){
-//     if(el.pointsPerGame > pts && el.assistsPerGame > as){
-//       return el
-//     }
-//   }).map(function(el){
-//     return el.name
-//   }).join(', ')
-// }
-
-// console.log(myFilteredArray(allStars, 13, 6))
-
-
-
-
-
+var sliced = Array.prototype.slice.call( my_object, 3 );
+//console.log(sliced)
 
 
 
