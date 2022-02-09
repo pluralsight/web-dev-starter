@@ -3,64 +3,94 @@
 
   window._ = {};
 
-
+  // Returns whatever value is passed as the argument. This function doesn't
+  // seem very useful, but remember it--if a function needs to provide an
+  // iterator when the user does not pass one in, this will be handy.
   _.identity = function(val) {
     return (val);
   };
 
+  /**
+   * COLLECTIONS
+   * ===========
+   *
+   * In this section, we'll have a look at functions that operate on collections
+   * of values; in JavaScript, a 'collection' is something that can contain a
+   * number of values--either an array or an object.
+   *
+   *
+   * IMPORTANT NOTE!
+   * ===========
+   *
+   * The .first function is implemented for you, to help guide you toward success
+   * in your work on the following functions. Whenever you see a portion of the
+   * assignment pre-completed, be sure to read and understand it fully before
+   * you proceed. Skipping this step will lead to considerably more difficulty
+   * implementing the sections you are responsible for.
+   */
 
+  // Return an array of the first n elements of an array. If n is undefined,
+  // return just the first element.
 
-
-
+  //I - array, n (number)
+  //O = array of the first n elements
+  //C =
+  //E = if n is undefined then return first element of array, if n is zero
+  //    return an emtpy array, if n is greater than the length of the array,
+  //    return array
   _.first = function(array, n) {
     return n === undefined ? array[0] : array.slice(0, n);
   };
 
+  // Like first, but for the last elements. If n is undefined, return just the
+  // last element.
+
+  //I - array, n (number)
+  //O - array with last n elements from array
+  //C - should not use the native version of any underbar methods
+  //E - if n is undefined, return just last element.  If n is less than or equal to
+  //    0, return empty array.  If n is greater than length of array , return the
+  //    entire array
 
 
 
+  //pseudocode
 
+  //If n is undefined, return the last element of array
+  //If n is less than or equal to 0, return empty array
+  //If n is greater than length of array, return entire array.
+  //create lastNItems set to emtpy array
+  //iterate over array
+    //start at length of array minus n
+    //push current element to lastNItems
+  //return lastNItems
 
-//BAISC OPTION
   _.last = function(array, n) {
-    if (n === undefined) {
-      return array[array.length - 1];
-    } else if (n <= 0) {
-      return [];
-    } else if (n > array.length) {
-      return array;
-    }
+    // if (n === undefined) {
+    //   return array[array.length - 1];
+    // } else if (n <= 0) {
+    //   return [];
+    // } else if (n > array.length) {
+    //   return array;
+    // }
 
-    var lastNItems = [];
-    for (var i = array.length - n; i < array.length; i++){
-      lastNItems.push(array[i])
-    }
-    return lastNItems
+    //var lastNItems = [];
+    // for (var i = array.length - n; i < array.length; i++){
+    //   lastNItems.push(array[i])
+    // }
+    // return lastNItems
+
+    if (n <= 0) { return []; }
+    return n === undefined ? array[array.length - 1] : array.slice(-n);
+
   };
-
-
-  //ADVANCED OPTION
-  _.last = function(array, n) {
-  if (n <= 0) { return []; }
-  return n === undefined ? array[array.length - 1] : array.slice(-n);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
+  //
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
+
 
   //I - array or object
   //O - no return, runs iterator function over each item
@@ -117,6 +147,8 @@
 
     return result;
   };
+
+
   //I - array
   //O - new filtered array
   //C - should not use native version of any underbar method
@@ -141,11 +173,6 @@
     });
     return result;
   };
-
-
-
-
-
 
 
   //I - array
@@ -174,19 +201,15 @@
   };
 
 
-
-
-
-
   // Produce a duplicate-free version of the array.
 
     // You can safely ignore the isSorted parameter in your solution!
-    // isSorted is only included for consistency with Underscore's
-    // version of uniq,its functionality is not specifically tested here.
+    // The isSorted parameter is only included for consistency with Underscore's
+    // version of uniq, and its functionality is not specifically tested here.
 
     // The iterator specifies what _.uniq uses to decide if an item is a
-    // duplicate. _.uniq should use an item's transformed value, the result
-    // of invoking iterator on the item, to determine if the original
+    // duplicate or not. _.uniq should use an item's transformed value, the result
+    // of invoking iterator on the item, to determine whether or not the original
     // item is unique in the collection so far.
 
     // If there is no defined iterator, _.uniq should default to use
@@ -195,8 +218,7 @@
     //I - array [11.2, 11.9, 12.4, 12.6]
     //O - new sorted arrray [11.2, 11.9, 12.6]
     //C - should not use native version of any underbar methods
-    //E - if no defined iterator, default to items original value
-    //    to determine uniqueness
+    //E - if no defined iterator, default to items original value to determine uniqueness
     //    can ignore isSorted parameter
 
     //pseudocode
@@ -251,7 +273,11 @@
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
+    // map() is a useful primitive iteration function that works a lot
+    // like each(), but in addition to running the operation on all
+    // the members, it also maintains an array of results.
     var result = [];
+
     _.each(collection, function(item, index, array) {
       result.push(iterator(item, index, array));
     });
@@ -274,7 +300,7 @@
   //E - do not modify original array
 
   //pseudocode
-
+  //
 
   _.pluck = function(collection, key) {
 
@@ -282,20 +308,6 @@
       return item[key];
     });
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Reduces an array or object to a single value by repetitively calling
   // iterator(accumulator, item) for each item. accumulator should be
@@ -354,15 +366,6 @@
     });
     return accumulator;
   };
-
-
-
-
-
-
-
-
-
 
 
   // --------------------
@@ -447,7 +450,7 @@
     }
     if (iterator === undefined) {
       iterator = _.identity;
-      for(var i = 0; i < collection.length; i++) {
+      for (var i = 0; i < collection.length; i++) {
         if (iterator(collection[i])) {
           return true;
         }
@@ -461,19 +464,6 @@
     }
     return false;
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   /**
@@ -522,20 +512,6 @@
     return obj;
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   // I - Object
@@ -557,9 +533,6 @@
       });
     });
     return obj;
-
-
-
   };
 
 
@@ -640,17 +613,19 @@
   // The arguments for the original function are passed after the wait
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
+
   _.delay = function(func, wait) {
-
-
-
-
+    var args = Array.prototype.slice.call(arguments);
+    var sliceArgs = args.slice(2);
+    if (sliceArgs.length !== 0) {
+      return setTimeout(function() {
+        return func.apply(null, sliceArgs);
+      }, wait);
+    }
+    return setTimeout(function() {
+      return func.apply(null, args);
+    }, wait);
   };
-
-
-
-
-
 
 
   /**
@@ -663,7 +638,26 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
+
+  //create an empty variable
+  //while array is stilll alive
+    //generate random number based on array length
+    //push that element in accArr
+    //splice it from array
+
+
+
   _.shuffle = function(array) {
+    var accArr = [];
+    var newArr = array.slice();
+    var randInd = 0;
+
+    while (newArr.length > 0) {
+      randInd = Math.floor(Math.random() * (newArr.length));
+      accArr.push(newArr[randInd]);
+      newArr.splice(randInd, 1);
+    }
+    return accArr;
   };
 
 
@@ -693,8 +687,30 @@
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3])
   // returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
+
+  //find longest array in arguments
+  //iterate across all input arrays
+   //iterate through
   _.zip = function() {
+    console.log(arguments);
+    var args = Array.prototype.slice.call(arguments);
+    args.sort(function (a, b) { return b.length - a.length; });
+    var accArr = [];
+
+    // for (let i = 0; i < args.length; i++) {
+    //   accArr = accArr[i]
+    //   for(let j = 0; j < args[i].length; j++) {
+
+    //     accArr.push(args[j][i])
+    //     console.log(accArr)
+    //   }
+    // }
+
+
+    console.log(accArr);
+    //return accArr
   };
+
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
   // The new array should contain all elements of the multidimensional array.
