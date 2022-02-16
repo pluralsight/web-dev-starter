@@ -1,3 +1,436 @@
+var x13 = {
+  name: 'x13',
+  canFly: true,
+  canCook: false,
+  yearsInspected: [2002, 2005, 2010, false],
+  fueledBy: "cookies",
+  bestFriend: {
+    name: "z09",
+    yearsKnown: 4,
+    isCharging: true
+  }
+};
+
+var z09 = {
+  name: 'z09',
+  canFly: false,
+  canCook: true,
+  yearsInspected: [1998, 2005, 2018],
+  fueledBy: "jealousy",
+  bestFriend: {
+    name: "r04",
+    yearsKnown: 12,
+    isCharging: false,
+    makingMusic: false
+  }
+};
+
+// example invocation:
+
+// example output:
+/*
+{
+  false: 3
+}
+*/
+
+//I: Two objects, robot1 and robot2 and some `value`.
+//O: An object with a key of `value` and whose value is
+// the number of occurrences of `value` in both `robot1` and robot2`.
+// See example invocation and output above.
+//C: None.
+//E: None. We can assume `robot1` and `robot2` will always
+// have the same structure.
+
+//debugger
+//reduce with recursion
+//iterate object
+//if value is array or object
+//invoke helper function
+//if value is target
+//add one to counter
+//return object with value and counter
+
+var countHelper = function (inp, value) {
+  return _.reduce(inp, function (acc, el) {
+    if (Array.isArray(el) || typeof el === 'object') {
+      return acc += countHelper(el, value)
+    }
+    return el === value ? acc += 1 : acc
+  }, 0)
+}
+
+var robotValueCounter = function (robot1, robot2, value) {
+
+  var newArr = [robot1, robot2];
+  var result = _.reduce(newArr, function (acc, el) {
+    return acc += countHelper(el, value)
+  }, 0)
+  return { [value]: result }
+}
+
+console.log(robotValueCounter(x13, z09, false))
+
+
+
+function sum(inp) {
+  //REDUCE WITH RECURSION
+
+  //accumulate into a number
+  //if nested element
+  //invoke helper function
+  //otherwise
+  //add to accumulator
+  //return
+
+  return _.reduce(inp, function (acc, el) {
+    if (Array.isArray(el)) {
+      return acc += sum(el)
+    } else {
+      return acc += el
+    }
+  }, 0)
+}
+
+//console.log(sum([1, [11, 42, [8, 1], 4, [22, 21]]]))
+
+
+
+function getElementsThatEqual10AtProperty(inp, target) {
+  //debugger
+  //iterate down object
+  //if current key is an array
+  //iterate accross array
+  //push 'key' into new array
+
+  //base case 1
+  //base case 2
+
+  //if array
+  //iterate down array
+  //concat 'key' into array
+  //return array
+
+  //iterate down object
+  //check for nestedness
+  //if nested
+  //send to helper function
+  //otherwise
+  //if key at object matches 'key'
+  //concat to array
+  //return array
+
+
+
+  if (Array.isArray(inp)) {
+    return _.reduce(inp, function (acc, el) {
+      if (el === target) {
+        return acc = acc.concat(el)
+      } else {
+        return acc
+      }
+    }, [])
+  }
+
+  // result = []
+  // for (var key in inp) {
+  //   if (inp[key] === target) {
+  //     result = result.concat(inp[key]);
+  //   } else if (Array.isArray(inp[key]) || typeof inp[key] === 'object') {
+  //     result = result.concat(getElementsThatEqual10AtProperty(inp[key], target))
+  //   }
+
+  // }
+  // return result
+
+  return _.reduce(inp, function (acc, el) {
+    if (el === target) {
+      return acc = acc.concat(el)
+    } else if (Array.isArray(el) || typeof el === 'object') {
+      return acc = acc.concat(getElementsThatEqual10AtProperty(el, target))
+    } else {
+      return acc
+    }
+  }, [])
+
+}
+
+var obj = {
+  key: [1000, 10, 50, 10],
+  key2: [1, 2, 3, 4, 5, 10],
+  key3: true,
+  key4: 10,
+  key5: {
+    key: [1000, 10, 50, 10],
+    key2: [1, 2, 3, 4, 5, 10],
+    key3: true,
+    key4: 10,
+    key5: {
+      key: [1000, 10, 50, 10],
+      key2: [1, 2, 3, 4, 5, 10],
+      key3: true,
+      key4: 10,
+      key5: [1, 2, 3, 4, 5, 10]
+    }
+  }
+};
+var output = getElementsThatEqual10AtProperty(obj, true);
+//var output = getElementsThatEqual10AtProperty([1000, 10, 50, 10], 10)
+//console.log(output); // --> [10, 10]
+
+
+
+
+
+
+
+//tail call optimazation
+//Dijkstra was right - recursion should not be difficult
+
+function fact(acc, n) {
+  if (n === 1) {
+    return acc;
+  } else {
+    return fact(acc * n, n - 1)
+  }
+}
+
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return n * factorial(n - 1)
+}
+//console.log(fact(1, 10))
+
+
+
+
+function sum(arr) {
+  //debugger
+  //simplist case
+  //if arr.length === 0
+  //return 0
+  if (arr.length === 0) {
+    return 0
+  }
+
+
+  //if it is flat what should we do?
+  //iterate accross the array
+  //sum each element with total
+  //return total
+
+  //if nested
+  //check current ele for nestedness?
+  //if nested, recurse with current element
+  //otherwise we are good
+  //add to total
+  //return total
+
+  // var total = 0;
+  // arr.forEach(function (ele) {
+  //   if (Array.isArray(ele)) {
+  //     total += sum(ele)
+  //   } else {
+  //     total += ele;
+  //   }
+  // })
+  // return total
+
+  //using REDUCE!
+
+  return arr.reduce(function (total, ele) {
+    if (Array.isArray(ele)) {
+      return total += sum(ele)
+    } else {
+      return total += ele
+    }
+  }, 0)
+
+
+
+}
+
+//console.log(sum([1, [11, 42, [8, 1], 4, [22, 21]]]))
+
+
+//Find the Index (part 2) (edabit)
+//search for the index in an array of numbers
+//if not in array, return -1
+//debugger
+function search2(arr, item, index = 0) {
+  //base case
+  if (arr.length === 0) {
+    return -1
+  }
+  if (arr[0] === item) {
+    return index
+  }
+
+  index++
+  return search2(arr.slice(1), item, index)
+
+
+}
+
+//console.log(search2([1, 2, 3, 4, 2, 1, 4, 6, 5, 4], 5))
+
+//Collatz Conjecture (edabit)
+//if n is even => n/2
+//if n is odd => n*3+1
+
+function collatz(num, counter = 0) {
+  debugger
+  if (num === 1) {
+    return counter
+  }
+
+  //if n is even
+  //add one to counter
+  //recursion with new n
+  //if n is odd
+  //add one to counter
+  //recursion with new n
+
+  counter++
+  if (num % 2 === 0) {
+    return collatz(num / 2, counter)
+  } else {
+    return collatz(num * 3 + 1, counter)
+  }
+
+}
+//console.log(collatz(10))
+
+
+
+
+//debugger
+var name = "Window";
+var alice = {
+  name: "Alice",
+  sayHi: function () {
+    console.log(arguments)
+    console.log(this.name + " says hi");
+  }
+};
+var bob = { name: "Bob" };
+
+//alice.sayHi(bob)
+//alice.sayHi.call(bob)
+//alice.sayHi.call(bob)
+//alice.sayHi.bind(bob)
+//setTimeout(alice.sayHi.bind(bob), 2000);
+//setTimeout(alice.sayHi.bind(bob), 2000);
+//setTimeout(alice.sayHi.call(bob), 2000);
+
+//console.log(alice.sayHi.call(bob))
+
+
+
+
+function sayHello() {
+  //this.name = fef.name
+  console.log(this.name + " says hello!");
+  //console.log(arguments[0].name)
+}
+var alice = { name: "Alice" };
+
+//sayHello(alice)
+//sayHello.call(bob)
+
+
+
+
+//debugger
+//var x = 10;
+//var puzzle = function (amount) {
+//console.log(amount)
+//this.ssh = amount
+//console.log(this.ssh)
+//this.x += amount;
+//console.log(this.x)
+//return this.x;
+//};
+
+//var result = 50 - puzzle(20);
+//console.log(result)
+
+// window.name = 'window'
+
+// var alice = {
+//   name: 'Alice',
+//   greet: function () {
+//     return "Hi I am " + this.name
+//   }
+// }
+
+// var bob = {
+//   name: 'Bob',
+//   greet: alice.greet
+// }
+
+// var greet = alice.greet
+// var result = greet()
+// console.log(result)
+// var obj1 = { x: 10 };
+
+// var obj2 = Object.create(obj1);
+
+// var obj3 = Object.create(obj2);
+
+// // var result = obj3.x + 10;
+// // console.log(result)
+// var name = "Window";
+// var alice = {
+//   name: "Alice",
+//   sayHi: function () {
+//     alert(this.name + " says hi");
+//   }
+// };
+// var bob = { name: "Bob" };
+
+// setTimeout(alice.sayHi.bind(alice), 1000);
+
+
+
+
+window._ = {}
+_.each = (function (collection, iterator) {
+  if (Array.isArray(collection)) {
+    for (var i = 0; i < collection.length; i++) {
+      iterator(collection[i], i, collection)
+    }
+  } else if (typeof collection === 'object') {
+    for (var key in collection) {
+      iterator(collection[key], key, collection)
+    }
+
+  }
+})
+_.reduce = function (collection, iterator, accumulator) {
+  // TIP: To support both arrays and objects, try re-using each() here
+  //if(accumulator)
+
+  //iterate through the array
+  //add current item to accumulator sum
+  //return accumulator sum
+
+  if (accumulator === undefined) {
+    accumulator = collection[0]
+    collection = collection.slice(1)
+    _.each(collection, function (element) {
+      accumulator = iterator(accumulator, element)
+    })
+    return accumulator;
+  }
+
+  _.each(collection, function (element) {
+    accumulator = iterator(accumulator, element)
+  });
+  return accumulator;
+}
 // 9, ==> "9"
 // null,
 // true,
@@ -20,43 +453,155 @@
 // [{'a': 'b'}, {'c': 'd'}],
 // {'a': [], 'c': {}, 'b': true}
 
-var stringifyJSON = function (obj) {
+var converter = function (inp) {
+
+  if (inp === null) {
+    return 'null';
+  }
+  if (inp === true) {
+    return 'true';
+  }
+  if (inp === false) {
+    return 'false';
+  }
+  if (inp instanceof Date) {
+    return '"' + inp.toISOString() + '"';
+  }
+  if (typeof inp === 'string') {
+    return '"' + inp.replaceAll('\\', '\\\\') + '"';
+  }
+  if (typeof inp === 'number') {
+    return '' + inp;
+  }
 
 };
 
 
-console.log({ 'a': { 'b': 'c' } })
-
-
-
-
-var getElementsByClassName = function (className, node = document.body) {
-  debugger;
-
-  // var nodeArray = [];
-  // if (node.classList && node.classList.contains(className)) {
-  //   nodeArray.push(node);
-  //   //console.log(nodeArray)
-  // }
-  // if (node.hasChildNodes()) {
-  //   for (var i = 0; i < node.children.length; i++) {
-  //     nodeArray = nodeArray.concat(getElementsByClassName(className, node.children[i]));
-  //   }
-  // }
-  // return nodeArray;
-  var result = [];
-  if (node.classList.contains(className)) {
-    console.log(node);
-    result = result.concat(node);
+var stringifyJSON = function (inp) {
+  //debugger;
+  if (typeof inp !== 'object' || inp === null || inp instanceof Date) {
+    return converter(inp);
   }
 
-  if (node.hasChildNodes()) {
-    for (var i = 0; i < node.children.length; i++) {
-      result = result.concat(getElementsByClassName(className, node.children[i]))
-    }
+  if (Array.isArray(inp)) {
+    var str = _.reduce(inp, function (acc, el) {
+      return acc += stringifyJSON(el) + ',';
+    }, '')
+    return '[' + str.slice(0, -1) + ']';
   }
-  return result;
+
+  if (typeof inp === 'object') {
+    inpKeys = Object.keys(inp);
+
+
+    var str = _.reduce(inpKeys, function (acc, el) {
+      if (inp[el] !== undefined && !(inp[el] instanceof Function)) {
+        return acc += stringifyJSON(el) + ':' + stringifyJSON(inp[el]) + ','
+      } else {
+        return acc;
+      }
+    }, '');
+    return str ? '{' + str.slice(0, -1) + '}' : '{}'
+  }
 };
+
+
+//curTest = 9
+//var curTest = null
+//var curTest = true
+// false
+// 'Hello world'
+//var curTest = []
+//var curTest = [8]
+//var curTest = ['hi']
+//var curTest = [8, 'hi']
+//var curTest = [1, 0, -1, -0.3, 0.3, 1343.32, 3345, 0.00011999999999999999]
+//var curTest = [8, [[], 3, 4]]
+//var curTest = [[[['foo']]]]
+//var curTest = {}
+//var curTest = { 'a': 'apple' }
+//var curTest = { 'foo': true, 'bar': new Date(), 'baz': null }
+//var curTest = { 'boolean, true': true, 'boolean, false': false, 'null': null }
+//var curTest = { 'a': ['b', 'c'] }
+//var curTest = { 'e': { 'x': 'y' }, 't': { 'r': { 'e': 'r' }, 'p': { 'y': 'r' } }, 'y': 'e' };
+//var curTest = { 'a': function () { }, 'b': undefined, 'c': function () { } }
+//var curTest = { far: 'bar', 'a': function () { }, 'b': undefined, foo: true }
+// // basic nesting
+//var curTest = { 'a': { 'b': 'c' } }
+//var curTest = { 'a': ['b', 'c'] }
+//var curTest = [{ 'a': 'b' }, { 'c': 'd' }]
+//var curTest = { 'a': [], 'c': {}, 'b': true }
+//var curTest = ["\\\\\\a\\"]
+//var curTest = ["and you can\'t escape thi\s"]
+//var curTest = new Date()
+//advanced
+//var curTest = { "firstName": "John", "lastName": "Smith", "age": ' + ', "address": { "streetAddress": "21 2nd Street", "city": "New York", "state": "NY", "postalCode": "10021" }, "phoneNumber": [{ "type": "home", "number": "212 555-1234" }, { "type": "fax", "number": "646 555-4567" }] }
+/*
+var str = stringifyJSON(curTest)
+console.log(str)
+console.log(str === JSON.stringify(curTest))
+console.log(JSON.stringify(curTest))
+*/
+
+
+//check to see if it is an object
+//if current value is an object
+//send current value to helper function
+//otherwise
+//iterate over keys/values as usual
+
+// if (Object.keys(inp).length === 0) {
+//   return '{}'
+// }
+
+// if (Array.isArray(inp[key])) {
+//   str += stringifyJSON(key) + ':' + stringifyJSON(inp[key]) + ','
+// }
+
+
+// inpKeys = Object.keys(inp)
+// inpValues = Object.values(inp)
+// for (var i = 0; i < inpKeys.length; i++) {
+//   if (typeof inpValues[i] !== 'function' && typeof inpValues[i] !== 'undefined') {
+//     if (inpValues[i] !== null && typeof inpValues[i] === 'object') {
+//       str += stringifyJSON(inpValues[i])
+//     }
+//     if (i === inpKeys.length - 1) {
+//       str += stringifyJSON(inpKeys[i]) + ':' + stringifyJSON(inpValues[i]) + "}"
+//     } else {
+//       str += stringifyJSON(inpKeys[i]) + ':' + stringifyJSON(inpValues[i]) + ","
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var getElementsByClassName = function (className, node) {
+
+//   node = node ? node : document.body;
+//   var result = [];
+//   if (node.classList.contains(className)) {
+//     result = result.concat(node);
+//   }
+
+//   if (node.hasChildNodes()) {
+//     for (var i = 0; i < node.children.length; i++) {
+//       result = result.concat(getElementsByClassName(className, node.children[i]));
+//     }
+//   }
+//   return result;
+// };
+
 //console.log(getElementsByClassName('someDiv'))
 
 
@@ -432,7 +977,7 @@ memoize = function (func) {
   };
 };
 var nthFibo = memoize(function (n) {
-  debugger
+  //debugger
   if (n === 1) {
     return 1;
   }
@@ -474,12 +1019,12 @@ var replaceKeysInObj = function (obj, oldKey, newKey) {
   }
   return obj
 };
-var obj = { 'e': { 'x': 'y' }, 't': { 'r': { 'e': 'r' }, 'p': { 'y': 'r' } }, 'y': 'e' };
+//var obj = { 'e': { 'x': 'y' }, 't': { 'r': { 'e': 'r' }, 'p': { 'y': 'r' } }, 'y': 'e' };
 //console.log(replaceKeysInObj(obj, 'y', '###'))
 
 
 // 23. Write a function that counts the number of times a value occurs in an object.
-var obj = { 'e': { 'x': 'y' }, 't': { 'r': { 'e': 'r' }, 'p': { 'y': 'r' } }, 'y': 'e' };
+//var obj = { 'e': { 'x': 'y' }, 't': { 'r': { 'e': 'r' }, 'p': { 'y': 'r' } }, 'y': 'e' };
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
 var countValuesInObj = function (obj, value) {
@@ -734,8 +1279,46 @@ var divide = function (x, y) {
 
 //console.log(divide(78, 453))
 
+function max(array) {
+  if (array.length === 0) {
+    return -Infinity
+  }
+  if (array.length === 1) {
+    return array[0]
+  }
+  const result = max(array.slice(1))
+  if (array[0] > result) {
+    return array[0]
+  } else {
+    return result
+  }
+}
 
+//var myArray = [1, 42, 112, 32, 21]
+//console.log(max(myArray))
+//var max = Math.max.apply(null, myArray) //= 112
 
+function getSum(a, b) {
+  if (a < b) {
+    var step = 1
+  } else {
+    step = -1
+  }
+  if (a === b) {
+    return a;
+  }
+  return a + getSum(a + step, b)
+}
+
+//console.log(getSum(2, -1))
+/*
+(1, 0) --> 1 (1 + 0 = 1)
+(1, 2) --> 3 (1 + 2 = 3)
+(0, 1) --> 1 (0 + 1 = 1)
+(1, 1) --> 1 (1 since both are same)
+(-1, 0) --> -1 (-1 + 0 = -1)
+(-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+*/
 
 
 
@@ -750,16 +1333,25 @@ var powerOfTwo = function (n) {
   //if each n/2 % 2 === 0 down to n = 2
   //16%2 === 0, 16/2 % 2 === 0, 16/2/2 % 2 === 0, 16/2/2/2 % 2 === 0 true
   //10%2 === 0, 10/2 % 2 !== 0 false
+  //n2 = (n − 1)2 + (n − 1) + n
+  console.log(n)
+  if (n < 0) {
+    return false
+  }
+  if (n === 0) {
+    return true;
+  }
   if (n === 2 || n === 1) {
     return true
   }
   if (n / 2 % 2 !== 0) {
+    console.log(n)
     return false
   }
 
   return powerOfTwo(n / 2)
 }
-//console.log(powerOfTwo(0))
+//console.log(powerOfTwo(25))
 
 
 
@@ -848,7 +1440,7 @@ var reverse = function (string) {
   }
   return string[string.length - 1] + reverse(string.slice(0, -1))
 };
-console.log(reverse('hello'))
+//console.log(reverse('hello'))
 
 
 //print out all elements from array
