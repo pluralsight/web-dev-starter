@@ -1,3 +1,118 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toCamelCase(str){
+  debugger
+
+  str = str.split('')
+  var acc = []
+
+  for (var i = 0; i < str.length; i++) {
+    if(str[i] === '-' || str[i] === '_') {
+      acc = acc.concat(str[i + 1].toUpperCase())
+      i++
+    } else {
+      acc = acc.concat(str[i])
+    }
+  }
+  return acc.join('')
+
+}
+
+//console.log(toCamelCase('the_stealth_warrior'))  // theStealthWarrior
+
+
+
+
+function removeElement(array, discarder) {
+
+  return array.reduce(function(acc, el){
+    if (el !== discarder) {
+      acc.push(el);
+      return acc
+    } else {
+      return acc;
+    }
+  }, [])
+}
+
+// var output = removeElement(['is', 'it', 'for'], 'for');
+// console.log(output); // --> [1, 3, 1]
+
+
+function countAllCharacters(str) {
+
+//return str.split('').reduce(function(acc, el){
+  return [...str].reduce(function(acc, el){
+  if(!acc[el]) {
+      acc[el] = 1
+      return acc
+  } else {
+      acc[el]++
+      return acc
+  }
+}, {})
+
+}
+//var output = countAllCharacters('banana');
+//console.log(output); // --> {b: 1, a: 3, n: 2}
+
+function recruseiveCountAllCharacters(str, obj) {
+  debugger
+  if (str.length === 0) {
+    return {}
+  }
+
+  var obj = recruseiveCountAllCharacters(str.slice(1), obj)
+
+  if (!obj[str[0]]) {
+    obj[str[0]] = 1
+  } else {
+    obj[str[0]]++
+  }
+  return obj
+
+}
+
+// var output = recruseiveCountAllCharacters('banana');
+// console.log(output); // --> {b: 1, a: 3, n: 2}
+
+
+
 var x13 = {
   name: 'x13',
   canFly: true,
@@ -61,6 +176,7 @@ var countHelper = function (inp, value) {
 }
 
 var robotValueCounter = function (robot1, robot2, value) {
+  debugger
 
   var newArr = [robot1, robot2];
   var result = _.reduce(newArr, function (acc, el) {
@@ -69,7 +185,7 @@ var robotValueCounter = function (robot1, robot2, value) {
   return { [value]: result }
 }
 
-console.log(robotValueCounter(x13, z09, false))
+//console.log(robotValueCounter(x13, z09, false))
 
 
 
@@ -94,9 +210,29 @@ function sum(inp) {
 
 //console.log(sum([1, [11, 42, [8, 1], 4, [22, 21]]]))
 
+function getElementsThatEqual10AtProperty(obj, target) {
+  console.log (obj)
+
+  for (var key in obj) {
+      if (key === target) {
+          return obj[key].reduce(function(acc, el){
+              if(el === 10) {
+                  return acc.concat(el)
+              } else {
+                return acc
+              }
+          }, [])
+      }
+  }
+}
+var obj = {
+  key: [1000, 10, 50, 10]
+};
+//var output = getElementsThatEqual10AtProperty(obj, 'key');
+//console.log(output); // --> [10, 10]
 
 
-function getElementsThatEqual10AtProperty(inp, target) {
+function LLLLLLgetElementsThatEqual10AtProperty(inp, target) {
   //debugger
   //iterate down object
   //if current key is an array
@@ -174,7 +310,7 @@ var obj = {
     }
   }
 };
-var output = getElementsThatEqual10AtProperty(obj, true);
+//var output = getElementsThatEqual10AtProperty(obj, true);
 //var output = getElementsThatEqual10AtProperty([1000, 10, 50, 10], 10)
 //console.log(output); // --> [10, 10]
 
@@ -1414,24 +1550,21 @@ var modulo = function (x, y) {
 
 
 var palindrome = function (str) {
-  //if first letter and last letter are the same
-  //if only one letter, true
-  //if two letters of the same, true
-
-  if (str.length === 1 || str[0] === str[1]) {
+ //debugger
+  //if (str.length === 0 || str[0] === str[1]) {
+    if (str.length === 0) {
     return true
   }
 
   if (str[0] === str[str.length - 1]) {
-    //recurse
+
     return palindrome(str.slice(1, -1))
   } else {
     return false;
   }
-
-
 };
-//console.log(palindrome('helle'))
+//console.log(palindrome('abacaba'))
+//console.log(palindrome('helleh'))
 
 
 var reverse = function (string) {
