@@ -54,7 +54,9 @@ body{
     transition: background-color 200ms linear;
     font-family: 'Open Sans';
     color: var(--BETA);            /*👉Text Color👈*/
+    --arabicFontSize: 1.9rem
 }
+
 
 nav{
     height: 60px;
@@ -64,7 +66,7 @@ nav{
     width: 100%;
     transition: background-color 200ms linear;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
 
@@ -76,7 +78,7 @@ blockquote {
     flex-wrap: wrap;
     direction: rtl;
     font-family: 'KFGQPC Uthmanic Script HAFS';
-    font-size: 2rem;
+    font-size: var(--arabicFontSize);
     background-color: var(--OMEGA);
     color: var(--BETA);
     padding: 10px 20px 15px;
@@ -95,7 +97,7 @@ h1{
 }
 
 div.contentDiv{
-    width: 75%;
+    width: 60%;
     display: grid;
     gap: 20px 20px;
     grid-template-columns: 1fr;
@@ -203,4 +205,37 @@ span[tooltip]:hover::before {
 
 span[tooltip]:hover{
     color: var(--GAMMA);
+}
+
+
+#fonter button {
+    border:none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    background-color: var(--OMEGA);
+    color: var(--BETA);
+    transition: background-color 200ms linear;
+}
+
+#fonter button:hover {
+    background-color: var(--ALPHA);
+}
+
+#fonter{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fonter button.kill{
+    cursor: not-allowed;
+    display: unset;
+    opacity: 25%;
+}
+
+#fonter button.kill:hover {
+    background-color: var(--OMEGA);
 }
