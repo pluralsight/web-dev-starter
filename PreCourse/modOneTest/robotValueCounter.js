@@ -1,3 +1,75 @@
+
+
+var x13 = {
+  name: 'x13',
+  canFly: true,
+  canCook: false,
+  yearsInspected: [2002, 2005, 2010, false],
+  fueledBy: "cookies",
+  bestFriend: {
+    name: "z09",
+    yearsKnown: 4,
+    isCharging: true
+  }
+};
+
+var z09 = {
+  name: 'z09',
+  canFly: false,
+  canCook: true,
+  yearsInspected: [1998, 2005, 2018],
+  fueledBy: "jealousy",
+  bestFriend: {
+    name: "r04",
+    yearsKnown: 12,
+    isCharging: false,
+    makingMusic: false
+  }
+};
+
+//reduce with recursion
+//iterate object
+//if value is array or object
+//invoke helper function
+//if value is target
+//add one to counter
+//return object with value and counter
+
+var countHelper = function (inp, value) {
+  return _.reduce(inp, function (acc, el) {
+    if (Array.isArray(el) || typeof el === 'object') {
+      return acc += countHelper(el, value)
+    }
+    return el === value ? acc += 1 : acc
+  }, 0)
+}
+
+var robotValueCounter = function (robot1, robot2, value) {
+  debugger
+
+  var newArr = [robot1, robot2];
+  var result = _.reduce(newArr, function (acc, el) {
+    return acc += countHelper(el, value)
+  }, 0)
+  return { [value]: result }
+}
+
+//console.log(robotValueCounter(x13, z09, false))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var x13 = {
   name: 'x13',
   canFly: true,

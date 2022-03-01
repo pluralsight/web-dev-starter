@@ -423,7 +423,7 @@ _.pluck = function(collection, key){
         });
       };
       applyCoupon(groceries, .2)
-      // console.log(groceries)
+      //console.log(groceries)
 
 
 

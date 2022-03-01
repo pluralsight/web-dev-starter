@@ -1,3 +1,15 @@
+function aShift (inp) {
+  debugger
+  var map = 0abcdefghijklmnopqrstuvwxyza
+
+  return [...inp].reduce(function(acc, el) {
+    return acc = acc.concat(map[(map.indexOf(el)) + 1])
+  }, []).join('')
+}
+
+console.log(aShift('crazy'))
+
+
 
 //iterate down word
   //find the index of the current letter
@@ -36,7 +48,7 @@ debugger
   inp = inp.split('.')
   //console.log(inp)
 
-  if (inp[i] >= 0 && inp[i] <= 255 && inp[i] !== '' && inp[i] !== '00' $$ inp[i] !== '01') {
+  if (inp[i] >= 0 && inp[i] <= 255 && inp[i] !== '' && inp[i] !== '00' && inp[i] !== 'a1') {
     counter++
   }
   if (inp[1] >= 0 && inp[0] <= 255 && inp[1] !== '') {
