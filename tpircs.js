@@ -1,3 +1,39 @@
+/**
+ * A prime number is a whole number that has no other divisors other than
+ * itself and 1. Write a function that accepts a number and returns true if it's
+ * a prime number, false if it's not.
+ */
+
+ var primeTester = function(n, t=n) {
+   //debugger
+  if (typeof n !== 'number' || n < 1 || n % 1 !== 0) {
+    // n isn't a number or n is less than 1 or n is not an integer
+    return false;
+  }
+  //recursivily iterate through the number
+
+  if( t === 1){
+    return true
+  }
+  //base case
+  if ( n % t < 1 && t !== n) {
+    return false
+  }
+
+ return primeTester(n, t-1)
+
+};
+
+/* Extra credit: Write a function that generates a list of all prime numbers
+ * in a user-specified range (inclusive). If you're not quite sure where to start,
+ * check out the Sieve of Eratosthenes on Wikipedia. (And if you're feeling
+ * saucy, check out the Sieve of Atkin.)
+ */
+
+var primeSieve = function (start, end) {
+};
+
+console.log(primeTester(15485867))
 
 
 
@@ -12,6 +48,96 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *  Write a function that takes as its input a string and returns an array of
+ *  arrays as shown below sorted in descending order by frequency and then by
+ *  ascending order by character.
+ *
+ *       :: Example ::
+ *
+ *  characterFrequency('mississippi') ===
+ *  [
+ *    ['i', 4],
+ *    ['s', 4],
+ *    ['p', 2],
+ *    ['m', 1]
+ *  ]
+ *
+ *       :: Example2 ::
+ *
+ *  characterFrequency('miaaiaaippi') ===
+ *  [
+ *    ['a', 4],
+ *    ['i', 4],
+ *    ['p', 2],
+ *    ['m', 1]
+ *  ]
+ *
+ *       :: Example3 ::
+ *
+ *  characterFrequency('mmmaaaiiibbb') ===
+ *  [
+ *    ['a', 3],
+ *    ['b', 3],
+ *    ['i', 3],
+ *    ['m', 3]
+ *  ]
+ *
+ */
+
+
+var characterFrequency = function(string) {
+
+
+  string = string.split('')
+  const result = []
+
+  const obj = _.reduce(string, (acc, letter) => {
+    acc[letter] = acc[letter] || 0
+    acc[letter] += 1
+    return acc
+  }, {})
+
+  debugger
+  console.log(JSON.stringify(obj))
+
+    for(let letter in obj) {
+      result.push([letter, obj[letter]])
+      delete obj[letter]
+    }
+
+
+
+
+//return result;
+};
+
+// for(let i = 0; i <= result.length; i++) {
+//   if(obj[letter] > result[i][1]){
+//     result.push([letter, accArr[letter]])
+
+
+//characterFrequency('mississippi')
 
 
 
