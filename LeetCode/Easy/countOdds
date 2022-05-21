@@ -1,0 +1,64 @@
+
+_.range = function (start, stop, step) {
+  if (stop == null) {
+    stop = start || 0;
+    start = 0;
+  }
+  if (!step) {
+    step = stop < start ? -1 : 1;
+  }
+
+  var length = Math.max(Math.ceil((stop - start) / step), 0);
+  var range = Array(length);
+
+  for (var idx = 0; idx < length; idx++, start += step) {
+    range[idx] = start;
+  }
+
+  return range;
+}
+
+/*
+Input: low = 3, high = 7
+Output: 3
+Explanation: The odd numbers between 3 and 7 are [3,5,7].
+*/
+
+
+
+
+// var countOdds = function(low, high) {
+
+//   accArr = []
+
+//   for (let i = low; i <= high; i++ ){
+//     if (i % 2 === 1){
+//       accArr.push(i)
+//     }
+//   }
+//   return accArr.length
+// };
+
+// var countOdds = function (low, high) {
+//   return _.range(low, high + 1).reduce((acc, ea) => {
+//     if(ea % 2 === 1) {
+//       return acc.concat(ea)
+//     }
+//     return acc
+//   }, []).length
+// }
+
+// var countOdds = function (low, high) {
+//   return (_.range(low, high + 1).filter(ea => ea % 2 === 1 )).length
+// }
+
+
+var countOdds = function (low, high) {
+  if ( low % 2 === 1 ) {
+    return Math.ceil((high + 1 - low)/2)
+  }
+  return Math.floor((high + 1 - low)/2)
+}
+
+
+console.log(countOdds(8, 10))
