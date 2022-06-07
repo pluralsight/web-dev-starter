@@ -4,11 +4,13 @@
   "description": "JS Starter Code",
   "main": "script.js",
   "scripts": {
-    "start": "lite-server"
+    "start": "lite-server",
+    "test" : "jest"
   },
   "author": "Pluralsight",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^28.1.0",
     "lite-server": "^2.6.1"
   },
   "dependencies": {
