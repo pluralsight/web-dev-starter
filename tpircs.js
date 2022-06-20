@@ -1,5 +1,31 @@
-//Depth first search algo
 
+
+
+
+
+
+
+
+
+
+
+
+// (function countUniqueValues(arr){
+//   debugger
+
+//   let i = 0;
+//   for (let j = 1; j < arr.length; j++ ) {
+//     if (arr[i] !== arr[j]) {
+//       i++
+//       arr[i] = arr[j]
+//     }
+//   }
+//   return i + 1
+// })([1, 1, 1, 1, 1, 1, 1, 2])
+
+
+
+//Depth first search algo
 var floodFill = function(image, sr, sc, newColor) {
   debugger
   const color = image[sr][sc];  // keep track of starting color
@@ -20,56 +46,16 @@ var floodFill = function(image, sr, sc, newColor) {
       fill(x, y + 1);
       fill(x, y - 1);
   }
-
   fill(sc, sr);
-
   return image;
 };
 
 image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
-floodFill(image, sr, sc, color)
+//floodFill(image, sr, sc, color)
 /*Output: [[2,2,2],[2,2,0],[2,0,1]]
 Explanation: From the center of the image with position (sr, sc) = (1, 1) (i.e., the red pixel), all pixels connected by a path of the same color as the starting pixel (i.e., the blue pixels) are colored with the new color.
 Note the bottom corner is not colored 2, because it is not 4-directionally connected to the starting pixel.
 */
-
-
-
-
-
-
-
-
-function ffind_averages_of_subarrays(K, arr) {
-  debugger
-  const accArr = []
-  let sum = 0
-
-  for ( let i = 0; i < arr.length - K; i++ ) {
-    for (let j = i; j < K + i; j++ ) {
-      sum += arr[j]
-    }
-    accArr.push(sum/K)
-    sum = 0;
-  }
-  return accArr
-}
-//[ 2.2, 2.8, 2.4, 3.6, 2.8 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function ffind_averages_of_subarrays(K, arr) {
   debugger
