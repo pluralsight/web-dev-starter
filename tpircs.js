@@ -10,6 +10,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 // (function countUniqueValues(arr){
 //   debugger
 
@@ -91,14 +101,14 @@ function ffind_averages_of_subarrays(K, arr) {
 
 //create a node
 
-class Node {
-  constructor(val) {
-    this.value = val
-    this.next = null
-  }
-}
+// class Node {
+//   constructor(val) {
+//     this.value = val
+//     this.next = null
+//   }
+// }
 
-class LinkedList {
+class LLinkedList {
   constructor() {
     this.tail = null
     this.head = null
@@ -146,19 +156,19 @@ class LinkedList {
 }
 
 
-var linky = new LinkedList
-linky.push(1)
-linky.push(2)
-linky.push(3)
-linky.pop()
+// var linky = new LinkedList
+// linky.push(1)
+// linky.push(2)
+// linky.push(3)
+// linky.pop()
 
 
 
-var node_a = new Node(1)
-node_a.next = new Node(2)
-node_a.next.next = new Node(3)
-node_a.next.next.next = new Node(4)
-console.log(node_a)
+// var node_a = new Node(1)
+// node_a.next = new Node(2)
+// node_a.next.next = new Node(3)
+// node_a.next.next.next = new Node(4)
+// console.log(node_a)
 
 
 
