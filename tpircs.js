@@ -1,3 +1,75 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+
+class TreeNode {
+  constructor(val, left, right) {
+    this.val = val;
+    this.right = right === undefined ? null : right
+    this.left = left === undefined ? null : left
+  }
+}
+
+var root = new TreeNode(1)
+root.left = new TreeNode(2)
+root.left.left = new TreeNode(4)
+root.left.right = new TreeNode(5)
+root.right = new TreeNode(3)
+
+console.log('root =', root)
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+
+var diameterOfBinaryTree = function (root) {
+  debugger
+  let depth = 0;
+
+  function innerFunc(root) {
+    if ( ! root ) {
+      return 0
+    }
+    let left = innerFunc(root.left)
+    let right = innerFunc(root.right)
+    depth = Math.max(depth, left + right)
+    return Math.max(right, left) + 1
+
+
+  }
+  innerFunc(root)
+  return depth
+}
+
+
+ var ddiameterOfBinaryTree = function(root) {
+  debugger
+
+  console.log('ROOT =', root)
+
+  if ( !root.left || !root.right ) {
+    return [root.val]
+  }
+
+  return [root.val].concat(diameterOfBinaryTree(root.left), diameterOfBinaryTree(root.right))
+  //return [].concat(diameterOfBinaryTree(root.right))
+
+};
+//console.log(diameterOfBinaryTree(root))
+
+
+
+
+
+
+
+
 
 /**
  * Definition for a binary tree node.
@@ -8,23 +80,23 @@
  * }
  */
 
-function TreeNode(val, left, right) {
-  this.val = (val === undefined ? 0 : val)
-  this.left = (left === undefined ? null : left)
-  this.right = (right === undefined ? null : right)
-}
+// function TreeNode(val, left, right) {
+//   this.val = (val === undefined ? 0 : val)
+//   this.left = (left === undefined ? null : left)
+//   this.right = (right === undefined ? null : right)
+// }
 
-let root = new TreeNode(3)
-root.left = new TreeNode(9)
-root.right = new TreeNode(20)
-root.right.left = new TreeNode(15)
-root.right.right = new TreeNode(7)
+// let root = new TreeNode(3)
+// root.left = new TreeNode(9)
+// root.right = new TreeNode(20)
+// root.right.left = new TreeNode(15)
+// root.right.right = new TreeNode(7)
 
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
- var isBalanced = function(root, depth = 0) {
+ var iisBalanced = function(root, depth = 0) {
   debugger
   console.log('root =', root)
   if ( !root ) {
@@ -43,14 +115,111 @@ root.right.right = new TreeNode(7)
 
 };
 
-console.log(isBalanced(root))
+const isBalanced = function (root) {
+  debugger
+  let balanced = true;
+  let depth = 0;
+
+  const innerFunc = function (root, depth) {
+
+    if ( !root ) { return 0 }
+
+    root.left && innerFunc(root.left, depth + 1)
+    root.right && innerFunc(root.right, depth + 1)
+
+    if ( Math.max(left, right) > 1 ) {
+      balanced = false
+    }
+  }
+  innerFunc(root)
+  return balanced
+
+}
 
 
+//console.log(isBalanced(root))
+
+function generateJoke() {
+  const config = {
+     headers: {
+        'Accept':'application/json'
+     }
+  }
+  fetch('https://icanhazdadjoke.com', config)
+  .then((res) => res.json())
+  .then((data) => {
+    // jokeText.innerHTML = data.joke
+    console.log('data =', data.joke)
+  })
+  .catch(err => console.log(err))
+}
+
+//generateJoke()
 
 
+let ssubArray = function (arr, s) {
+  debugger
 
+  let sum = 0
+  let res = []
 
+  for ( let i = 0; i < arr.length; i++ ) {
+    sum = 0;
+    for ( let j = i; j < arr.length; j++ ) {
+      sum += arr[j]
+      if ( sum === s ) {
+        res.push(i + 1, j + 1)
+        return res
+      }
+      if ( sum > s ) break;
+    }
 
+  }
+return -1
+}
+
+let subArray = function (arr, s, n) {
+  debugger
+
+  let sum
+  let j
+  let res = []
+
+  for ( let i = 0; i < arr.length; i++ ) {
+    sum = arr[i]
+    j = i + 1
+
+    while ( j <= n ) {
+
+      if( sum === s ) {
+        return [i+1, j]
+      }
+      if ( sum > s || j === n ) {
+        break
+      }
+
+      sum += arr[j]
+      j++
+    }
+
+  }
+  return -1
+}
+
+//const input = [1,2,3,4,5,6,7,8,9,10]
+//const input = [1, 2, 3, 7, 5]
+//const s = 15
+//const n = 10
+//console.log(subArray(input, s, n))
+/*
+Input:
+N = 10, S = 15
+A[] = {1,2,3,4,5,6,7,8,9,10}
+Output: 1 5
+Explanation: The sum of elements
+from 1st position to 5th position
+is 15.
+*/
 
 
 
@@ -116,7 +285,7 @@ var floodFill = function(image, sr, sc, newColor) {
   return image;
 };
 
-image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
+const image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
 //floodFill(image, sr, sc, color)
 /*Output: [[2,2,2],[2,2,0],[2,0,1]]
 Explanation: From the center of the image with position (sr, sc) = (1, 1) (i.e., the red pixel), all pixels connected by a path of the same color as the starting pixel (i.e., the blue pixels) are colored with the new color.
