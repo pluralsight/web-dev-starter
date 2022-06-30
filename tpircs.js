@@ -20,8 +20,12 @@ root.left = new TreeNode(2)
 root.left.left = new TreeNode(4)
 root.left.right = new TreeNode(5)
 root.right = new TreeNode(3)
+root.right.right = new TreeNode(8)
+root.right.left = new TreeNode(9)
+root.right.left.left = new TreeNode(10)
 
-console.log('root =', root)
+
+//console.log('root =', root)
 
 /**
  * @param {TreeNode} root
@@ -61,83 +65,33 @@ var diameterOfBinaryTree = function (root) {
   //return [].concat(diameterOfBinaryTree(root.right))
 
 };
-//console.log(diameterOfBinaryTree(root))
 
-
-
-
-
-
-
-
-
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-
-// function TreeNode(val, left, right) {
-//   this.val = (val === undefined ? 0 : val)
-//   this.left = (left === undefined ? null : left)
-//   this.right = (right === undefined ? null : right)
-// }
-
-// let root = new TreeNode(3)
-// root.left = new TreeNode(9)
-// root.right = new TreeNode(20)
-// root.right.left = new TreeNode(15)
-// root.right.right = new TreeNode(7)
-
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
- var iisBalanced = function(root, depth = 0) {
+var maxDepth = function(root) {
   debugger
-  console.log('root =', root)
-  if ( !root ) {
-    return depth
+  let depth = 0
+
+  if (root) {
+      depth = Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
   }
 
-  let left = 0
-  let right = 0
-
-  left += isBalanced(root.left, depth + 1)
-  right += isBalanced(root.right, depth + 1)
-  if ( Math.abs(left - right) > 1) {
-    return false
-  }
-  return Math.max(left, right)
-
+  return depth
 };
 
-const isBalanced = function (root) {
-  debugger
-  let balanced = true;
-  let depth = 0;
+//console.log(maxDepth(root))
 
-  const innerFunc = function (root, depth) {
-
-    if ( !root ) { return 0 }
-
-    root.left && innerFunc(root.left, depth + 1)
-    root.right && innerFunc(root.right, depth + 1)
-
-    if ( Math.max(left, right) > 1 ) {
-      balanced = false
-    }
-  }
-  innerFunc(root)
-  return balanced
-
-}
+/*
+ occurs with i = 0 and j = 3, nums[j] - nums[i] = 10 - 1 = 9.
+*/
 
 
-//console.log(isBalanced(root))
+
+
+
+
+
+
+
+
 
 function generateJoke() {
   const config = {
@@ -285,7 +239,7 @@ var floodFill = function(image, sr, sc, newColor) {
   return image;
 };
 
-const image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
+//const image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
 //floodFill(image, sr, sc, color)
 /*Output: [[2,2,2],[2,2,0],[2,0,1]]
 Explanation: From the center of the image with position (sr, sc) = (1, 1) (i.e., the red pixel), all pixels connected by a path of the same color as the starting pixel (i.e., the blue pixels) are colored with the new color.

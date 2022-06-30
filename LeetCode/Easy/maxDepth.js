@@ -10,37 +10,20 @@
  * @param {TreeNode} root
  * @return {number}
  */
-//  var maxDepth = function(root, counter = 1, max = 0) {
-//    console.log('root', root)
 
-//    if (!root) {return 0}
+ var maxDepth = function(root) {
+  debugger
+  let depth = 0
 
-//    // grab value
-//    console.log(root.val)
-//    console.log('counter =', counter, ', max =', max)
-//   //  counter++
-//    if ( counter > max ) {
-//      max = counter
-//    }
+  if (root) {
+      depth = Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+  }
 
-
-//    // wash
-//    if(root.left) {
-//      max = maxDepth(root.left, ++counter, max)
-//      counter--
+  return depth
+};
 
 
-//    }
-//    if(root.right) {
-//      max = maxDepth(root.right, ++counter, max)
-//      counter--
 
-//    }
-
-// return max
-
-
-// };
 
 const maxDepth = (root) => {
   if (!root) return 0;
