@@ -10,8 +10,8 @@ function makeGreeting(language) {
     }
   }
 }
-//var greetEnglish = makeGreeting('en')('John', 'Doe')
-var greetSpanish = makeGreeting('es')
+var greetEnglish = makeGreeting('en')('John', 'Doe')
+//var greetSpanish = makeGreeting('es')
 console.log(makeGreeting('en')('John', 'Doe'))
 //console.log(greetEnglish('John', 'Doe'));
 console.log(greetSpanish('George', 'Chavez'));

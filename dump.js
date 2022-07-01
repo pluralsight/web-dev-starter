@@ -149,6 +149,7 @@ var input = [
 var expected = [10, 9, 8];
 
 function eraseOrKeep(arr) {
+  debugger
   var vals = [];
   for (var i =0; i < arr.length; i ++) {
     var obj = arr[i];
