@@ -23,14 +23,15 @@ _.each = (function(collection, iterator) {
 var people = ['Tom', 'Dick', 'Harry'];
 var newObj = {}
 
-var test = _.each(people, function(el, ind, ar){
+_.each(people, function(el, ind, ar){
   newObj[el] = ind
 
   //console.log(el, ind, ar)
   // newArr.push(el)
 
 })
-//console.log(newObj)
+//console.log('newObj =', newObj)
+
 
 //indexOF  ///////////////////////////////////
 _.indexOf = function(array, target){
@@ -406,14 +407,8 @@ _.pluck = function(collection, key){
       ];
 
 
-
-
-
-
-
-
-
       var applyCoupon = function(groceries, coupon) {
+        debugger
         //console.log(groceries)
 
        return _.map(groceries, function(el){
@@ -422,7 +417,7 @@ _.pluck = function(collection, key){
           return el.salePrice = `$${(num1 - (num1 * coupon)).toFixed(2)}`
         });
       };
-      applyCoupon(groceries, .2)
+      //applyCoupon(groceries, .2)
       //console.log(groceries)
 
 
@@ -528,8 +523,6 @@ var sliced = Array.prototype.slice.call( my_object, 3 );
 
 
 
-
-
 var currentInventory = {
   shoes: [
     {name: 'tasselled black low-top lace-up', price: 850, designer: 'Brunello Cucinelli'},
@@ -550,7 +543,30 @@ var currentInventory = {
   ]
 };
 
-var getAveragePriceforShoes = function(inventory){
+const getDesAve = function ( obj ) {
+  debugger
+
+  let accObj = {}
+  let tracerObj = {}
+
+  for ( let key in obj ) {
+    for ( let i = 0; i < obj[key].length; i++ ) {
+      console.log(obj[key][i])
+      accObj[obj[key][i].designer] = ( accObj[obj[key][i].designer] || 0 ) + obj[key][i].price
+      tracerObj[obj[key][i].designer + "_count"] = (tracerObj[obj[key][i].designer + "_count"] || 0 ) + 1
+      tracerObj[obj[key][i].designer + "_average"] = 0
+    }
+  }
+  console.log( accObj )
+  console.log( tracerObj )
+  for ( let designer in accObj ) {
+    tracerObj[designer + '_average'] = accObj[designer] / tracerObj[designer + '_count']
+  }
+  console.log(Object.values(tracerObj))
+}
+//getDesAve(currentInventory)
+
+var fgetAveragePriceforShoes = function(inventory){
 
   // return inventory.shoes.forEach(function(item){
   // console.log(item.price)
@@ -567,9 +583,16 @@ var getAveragePriceforShoes = function(inventory){
   // return aveShoePrice = aveShoePrice/shoeArray.length
 
 };
-//designerSummary {
-//designerName : average price
-//}
+
+const getAvePriceForShoes = function (inventory) {
+  //debugger
+  return inventory.shoes.reduce((acc, ea) => {
+    return acc += ea.price
+  }, 0)/ inventory.shoes.length
+
+}
+//console.log(getAvePriceForShoes(currentInventory))
+
 
 function designerAve (obj){
   var cucinelliSum = 0;
@@ -763,24 +786,25 @@ let listAllShirts = function (obj){
 
 
 
-// function filter(array, callbackFunction) {
-//   return array.filter(callbackFunction);
-// }
+function filter(array, callbackFunction) {
+  debugger
+  return array.filter(callbackFunction);
+}
 
-// //Here is an example to get a sense of what filter should do.
+//Here is an example to get a sense of what filter should do.
 
-// var input = [1, 2, 3, 4];
-// var output = filter(input, function(value) {
-//   //return value % 2 === 0;
-//   if(value % 2 === 0){
-//     return false;
-//   } else {
-//     return true
-//   }
+var input = [1, 2, 3, 4];
+var output = filter(input, function(value) {
+  //return value % 2 === 0;
+  if(value % 2 === 0){
+    return false;
+  } else {
+    return true
+  }
 
-// })
+})
 
-// console.log(output); // [2, 4]
+//console.log(output); // [2, 4]
 
 
 
