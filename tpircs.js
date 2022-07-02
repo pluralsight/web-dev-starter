@@ -160,11 +160,6 @@ var characterFrequency = function(string) {
 //return result;
 };
 
-// for(let i = 0; i <= result.length; i++) {
-//   if(obj[letter] > result[i][1]){
-//     result.push([letter, accArr[letter]])
-
-
 //characterFrequency('mississippi')
 
 
