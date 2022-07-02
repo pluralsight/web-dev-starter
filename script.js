@@ -785,7 +785,7 @@ let listAllShirts = function (obj){
 
 
 
-
+/*
 function filter(array, callbackFunction) {
   debugger
   return array.filter(callbackFunction);
@@ -805,7 +805,7 @@ var output = filter(input, function(value) {
 })
 
 //console.log(output); // [2, 4]
-
+*/
 
 
 
