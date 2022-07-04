@@ -1,8 +1,10 @@
+
 /**
  * @param {string} s
  * @return {string}
  */
  var frequencySort = function(s) {
+
 
   let obj = {}
 
@@ -21,10 +23,24 @@
 //     .map(ea => new Array(ea.val).fill(ea.key).join(''))
 //     .join('')
 
-  arr.sort((a, b) => b.val - a.val)
+  let str = '';
+  let j;
 
+  arr.sort((a, b) => b.val - a.val)
+  debugger
+  for ( let i = 0; i < arr.length; i++ ) {
+    j = 0
+      while ( j < arr[i].val ) {
+          str += arr[i].key
+          j++
+      }
+  }
+return str
 };
 
+
+let s = "tree"
+console.log(frequencySort(s))
 
 /*
 Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.

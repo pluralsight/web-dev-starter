@@ -1,172 +1,143 @@
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+ var commonChars = function(words) {
+    let accArr = []
 
 
 
+   let obj = _.reduce(words[0], (acc, ea) => {
+      acc[ea] = acc[ea] || 0
+      // acc[ea]++
+      return acc
+    }, {})
+   debugger
 
+    for ( let i = 1; i < words.length; i++ ) {
 
 
+    }
 
+};
 
-
-
-function generateJoke() {
-  const config = {
-     headers: {
-        'Accept':'application/json'
-     }
-  }
-  fetch('https://icanhazdadjoke.com', config)
-  .then((res) => res.json())
-  .then((data) => {
-    // jokeText.innerHTML = data.joke
-    console.log('data =', data.joke)
-  })
-  .catch(err => console.log(err))
-}
-
-//generateJoke()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// const words = ["bella","label","roller"]
+// commonChars(words)
 
 
 /*
- *  Write a function that takes as its input a string and returns an array of
- *  arrays as shown below sorted in descending order by frequency and then by
- *  ascending order by character.
- *
- *       :: Example ::
- *
- *  characterFrequency('mississippi') ===
- *  [
- *    ['i', 4],
- *    ['s', 4],
- *    ['p', 2],
- *    ['m', 1]
- *  ]
- *
- *       :: Example2 ::
- *
- *  characterFrequency('miaaiaaippi') ===
- *  [
- *    ['a', 4],
- *    ['i', 4],
- *    ['p', 2],
- *    ['m', 1]
- *  ]
- *
- *       :: Example3 ::
- *
- *  characterFrequency('mmmaaaiiibbb') ===
- *  [
- *    ['a', 3],
- *    ['b', 3],
- *    ['i', 3],
- *    ['m', 3]
- *  ]
- *
- */
-
-
-var characterFrequency = function(string) {
-
-
-  string = string.split('')
-  const result = []
-
-  const obj = _.reduce(string, (acc, letter) => {
-    acc[letter] = acc[letter] || 0
-    acc[letter] += 1
-    return acc
-  }, {})
-
-  debugger
-  console.log(JSON.stringify(obj))
-
-    for(let letter in obj) {
-      result.push([letter, obj[letter]])
-      delete obj[letter]
-    }
+Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
 
 
 
+Example 1:
 
-//return result;
-};
+Input: words = ["bella","label","roller"]
+Output: ["e","l","l"]
+Example 2:
 
-//characterFrequency('mississippi')
+Input: words = ["cool","lock","cook"]
+Output: ["c","o"]
+
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consists of lowercase English letters.
+*/
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//const target = {}
+const source = {"a": 1, "b": 2,"c":3}
+const target = {...source, "z": 10}
+
+//const newTarget = Object.assign(target, source)
+source.d = 4
+//newTarget.f = 6
+console.log('target =', target)
+console.log('source =', source)
+
+//console.log('newTarget =', newTarget)
 
 
 
