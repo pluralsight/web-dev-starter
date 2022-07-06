@@ -125,8 +125,6 @@ words[i] consists of lowercase English letters.
 
 
 
-
-
 //const target = {}
 const source = {"a": 1, "b": 2,"c":3}
 const target = {...source, "z": 10}
