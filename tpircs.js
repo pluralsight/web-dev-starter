@@ -1,29 +1,65 @@
+
+
+// public class PersonFullName
+//     {
+//         private string _given;
+//         private string _surname;
+
+//         public static PersonFullName Create(string given, string surname)
+//         {
+//             return new PersonFullName (given, surname);
+//         }
+//         private PersonFullName(string given, string surname)
+//         {
+//             _given = given;
+//             _surname = surname;
+//         }
+//         public string Given => _given;
+//         public string Surname => _surname;
+//     }
+
+//     public class Author
+//     {
+//         private Guid _id;
+//         private PersonFullName _name;
+
+//         public Author(string given, string surname)
+//         {
+//             _id = Guid.NewGuid();
+//             _name = PersonFullName.Create(given, surname);
+
+//         }
+//         public Guid Id => _id;
+//         public PersonFullName Name=>_name;
+
+//  public void FixAuthorName(string given, string surname)
+//         { _name = PersonFullName.Create(given, surname);
+//         }
+//     }
+
 /**
  * @param {string[]} words
  * @return {string[]}
  */
- var commonChars = function(words) {
-    let accArr = []
+var commonChars = function (words) {
+  let accArr = [];
 
-
-
-   let obj = _.reduce(words[0], (acc, ea) => {
-      acc[ea] = acc[ea] || 0
+  let obj = _.reduce(
+    words[0],
+    (acc, ea) => {
+      acc[ea] = acc[ea] || 0;
       // acc[ea]++
-      return acc
-    }, {})
-   debugger
+      return acc;
+    },
+    {}
+  );
+  debugger;
 
-    for ( let i = 1; i < words.length; i++ ) {
-
-
-    }
-
+  for (let i = 1; i < words.length; i++) {}
 };
 
 // const words = ["bella","label","roller"]
 // commonChars(words)
-
 
 /*
 Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
@@ -47,140 +83,50 @@ Constraints:
 words[i] consists of lowercase English letters.
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let Person = function (firstName, lastName) {
+  this.silly = firstName;
+  var fullName = firstName + ' ' + lastName + ' ' + this.silly;
+
+  this.getFirstName = function () {
+    return firstName;
+  };
+  this.getLastName = function () {
+    return lastName;
+  };
+  this.getFullName = function () {
+    return fullName;
+  };
+};
+
+let aPerson = new Person('John', 'Smith');
+let bPerson = new Person('Sarah', 'Martins');
+
+// console.log(aPerson.getFirstName())
+// aPerson.silly = "Silly"
+// console.log(aPerson.getFirstName())
+
+// aPerson.firstName = "NotWorking";
+
+// console.log(aPerson.firstName);
+// //debugger
+// console.log(aPerson.getFullName());
+// console.log(aPerson.silly)
 
 //const target = {}
-const source = {"a": 1, "b": 2,"c":3}
-const target = {...source, "z": 10}
+const source = { a: 1, b: 2, c: 3 };
+const target = { ...source, z: 10 };
 
 //const newTarget = Object.assign(target, source)
-source.d = 4
+source.d = 4;
 //newTarget.f = 6
-console.log('target =', target)
-console.log('source =', source)
+console.log('target =', target);
+console.log('source =', source);
 
 //console.log('newTarget =', newTarget)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Single Linked List
 
 //insertion, removal, traversal methods
-
 
 // class Node {
 //   constructor(value) {
@@ -197,17 +143,17 @@ class singlyLinkedList {
   }
 
   push(val) {
-    var node = new Node(val)
+    var node = new Node(val);
 
-    if(this.head === null) {
+    if (this.head === null) {
       this.head = node;
       this.tail = node;
-      console.log(node)
+      console.log(node);
     } else {
       this.tail.next = node;
       this.tail = node;
     }
-    this.length++
+    this.length++;
     return this;
   }
 
@@ -230,15 +176,15 @@ class singlyLinkedList {
     let next;
     let counter = 0;
     //for (let i = 0; i < this.length; i ++ ) {
-      while(node) {
+    while (node) {
       next = node.next;
       node.next = prev;
       prev = node;
       node = next;
-      counter++
-      console.log(counter)
+      counter++;
+      console.log(counter);
     }
-    print(this)
+    print(this);
     return this;
   }
 
@@ -248,37 +194,32 @@ class singlyLinkedList {
     this.head = this.tail;
     this.tail = currentNode;
 
-
-    function innerFunc ( node, parent ) {
+    function innerFunc(node, parent) {
       let result = parent || {};
 
-      if(node) {
+      if (node) {
         let child = node.next;
         node.next = parent;
-        result = innerFunc ( child, node)
+        result = innerFunc(child, node);
       }
       return result;
     }
-    return innerFunc ( currentNode )
-
+    return innerFunc(currentNode);
   }
 
-
-
-
   traverse(val) {
-    var counter = 0
+    var counter = 0;
     var current = this.head;
-    while(current) {
-      console.log('current', current)
-      current = current.next
-      counter++
+    while (current) {
+      console.log('current', current);
+      current = current.next;
+      counter++;
     }
-    return `Number of nodes ${counter}`
+    return `Number of nodes ${counter}`;
   }
 
   reverseByLength(val) {
-    console.log(val)
+    console.log(val);
 
     // var end;
     // var node = this.head
@@ -294,18 +235,15 @@ class singlyLinkedList {
     //link up tempHead
   }
 
-
   print() {
-
     var arr = [];
     var current = this.head;
-    while(current){
-      arr.push(current.value)
+    while (current) {
+      arr.push(current.value);
       current = current.next;
     }
-    console.log(arr)
+    console.log(arr);
   }
-
 }
 // var linky = new singlyLinkedList()
 // linky.push(10)
@@ -316,173 +254,6 @@ class singlyLinkedList {
 // //console.log(linky.reverse())
 // console.log(linky.recursionRev())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Write a function that finds the largest possible product of any three numbers
  * from an array.
  *
@@ -492,41 +263,32 @@ class singlyLinkedList {
  * Extra credit: Make your function handle negative numbers.
  */
 
-
-var largestProductOfThree = function(array) {
+var largestProductOfThree = function (array) {
   //debugger
   // set up a largets variable
   //iterate over array
-    //iteratae over array, starting at i + 1
-      //iterate over array, starting at i + 2
-        //check against lartest variable
+  //iteratae over array, starting at i + 1
+  //iterate over array, starting at i + 2
+  //check against lartest variable
 
   let greatest = 0;
   let product = 0;
 
-  for (let i = 0; i < array.length; i++ ) {
+  for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array.length; j++) {
       for (let k = j + 1; k < array.length; k++) {
-        product = array[i] * array[j] * array[k]
-        if ( product > greatest) {
-          greatest = product
+        product = array[i] * array[j] * array[k];
+        if (product > greatest) {
+          greatest = product;
         }
       }
     }
   }
-return greatest
-
+  return greatest;
 };
 
 // const res = largestProductOfThree([2, 1, 3, 7])
 // console.log(res)
-
-
-
-
-
-
-
 
 // var Range = function(start, end = start, step = 1) {
 
@@ -559,9 +321,6 @@ return greatest
 
 // var range = new Range(10, 0, -1);
 
-
-
-
 // doesthiswork = () => {
 
 //   const first = ['a', 'b', 'c', 'd', 'f']
@@ -585,55 +344,6 @@ return greatest
 
 // doesthiswork()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
  * Return an array with the power set of a given string.
  * Definition of power set: The set of all possible subsets including the empty set.
@@ -654,8 +364,8 @@ return greatest
  */
 
 var powerSett = function (str, pre = [], set = []) {
-  debugger
-  str
+  debugger;
+  str;
   //basecase for recursion
   if (str.length === 0) {
     return;
@@ -663,18 +373,12 @@ var powerSett = function (str, pre = [], set = []) {
 
   for (let i = 0; i < str.length; i++) {
     //if a prefix comes through, concatenate value
-    set.push(pre.concat(str))
+    set.push(pre.concat(str));
     //call function recursively removing values at or before i and adding value at i to pre
-    powerSet(str.slice(i + 1), pre.concat(str[i]), set)
+    powerSet(str.slice(i + 1), pre.concat(str[i]), set);
   }
-  return set
-
+  return set;
 };
-
-
-
-
-
 
 var powerSet = function (str) {
   //debugger
@@ -688,7 +392,6 @@ var powerSet = function (str) {
   let result = [''];
 
   for (let i = 0; i < charArr.length; i++) {
-
     // 💡 define the array length here to avoid an infinite loop
     // len = 1 --> 2 --> 4
     let len = result.length;
@@ -698,19 +401,11 @@ var powerSet = function (str) {
     }
   }
   return result;
-}
+};
 //console.log(powerSet('jump'))
 
-
-
-
-
-
-
 var makeChange = function (total) {
-
-
-  var coins = [1, 2, 5, 10, 20, 50, 100, 200]
+  var coins = [1, 2, 5, 10, 20, 50, 100, 200];
   counter = 0;
 
   var recursion = (sum, idx) => {
@@ -719,19 +414,14 @@ var makeChange = function (total) {
     }
     if (sum <= total) {
       for (var i = idx; i < coins.length; i++) {
-        recursion(coins[i] + sum, i)
+        recursion(coins[i] + sum, i);
       }
     }
-  }
+  };
 
-  recursion(0, 0)
+  recursion(0, 0);
   return counter;
-
-}
-
-
-
-
+};
 
 /*
 n = n || 3;
@@ -753,91 +443,34 @@ return accArr;
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
-  * Each number key on a standard phone keypad has a set of Latin letters written on
-  * it as well: http://en.wikipedia.org/wiki/File:Telephone-keypad2.svg
-  *
-  * Businesses often try to come up with clever ways to spell out their phone number
-  * in advertisements to make it more memorable. But there are a lot of combinations!
-  *
-  * Write a function that takes up to four digits of a phone number, and
-  * returns a list of all of the words that can be written on the phone with
-  * that number. (You should return all permutations, not only English words.)
-  *
-  * Example:
-  *   telephoneWords('2745');
-  *   => ['APGJ',
-  *        'APGK',
-  *        'APGL',
-  *        ..., // many many more of these
-  *        'CSIL']
-  *
-  * Tips:
-  *   - Phone numbers are strings! (A phone number can start with a zero.)
-  *   - The digits 0 and 1 do not have letters associated with them, so they should be left as numbers.
-  *   - Don't return every combination of those digits in any order, just the order given.
-  *
-  *  Extra credit: There's a list of English dictionary words at /usr/share/dict/words .
-  *  Why not filter your results to only return words contained in that file?
-  *
-  */
+ * Each number key on a standard phone keypad has a set of Latin letters written on
+ * it as well: http://en.wikipedia.org/wiki/File:Telephone-keypad2.svg
+ *
+ * Businesses often try to come up with clever ways to spell out their phone number
+ * in advertisements to make it more memorable. But there are a lot of combinations!
+ *
+ * Write a function that takes up to four digits of a phone number, and
+ * returns a list of all of the words that can be written on the phone with
+ * that number. (You should return all permutations, not only English words.)
+ *
+ * Example:
+ *   telephoneWords('2745');
+ *   => ['APGJ',
+ *        'APGK',
+ *        'APGL',
+ *        ..., // many many more of these
+ *        'CSIL']
+ *
+ * Tips:
+ *   - Phone numbers are strings! (A phone number can start with a zero.)
+ *   - The digits 0 and 1 do not have letters associated with them, so they should be left as numbers.
+ *   - Don't return every combination of those digits in any order, just the order given.
+ *
+ *  Extra credit: There's a list of English dictionary words at /usr/share/dict/words .
+ *  Why not filter your results to only return words contained in that file?
+ *
+ */
 
 var phoneDigitsToLetters = {
   0: '0',
@@ -849,11 +482,10 @@ var phoneDigitsToLetters = {
   6: 'MNO',
   7: 'PQRS',
   8: 'TUV',
-  9: 'WXYZ'
+  9: 'WXYZ',
 };
 
 //return array of all possible characters
-
 
 var telephoneWords = function (digitString) {
   // TODO: return every combination that can be spelled on a phone with these digits
@@ -872,27 +504,24 @@ var telephoneWords = function (digitString) {
   var getChars = function (num) {
     for (var key in phoneDigitsToLetters) {
       if (key === num) {
-        return phoneDigitsToLetters[key]
+        return phoneDigitsToLetters[key];
       }
     }
-  }
+  };
 
   var accArr = [];
-  var str = digitString.toString()
-  str = str.split('')
+  var str = digitString.toString();
+  str = str.split('');
 
   for (var i = 0; i < str.length; i++) {
-    accArr.push(getChars(str[i]).split(''))
+    accArr.push(getChars(str[i]).split(''));
   }
-  console.log(accArr)
+  console.log(accArr);
 
   var combos = [];
 
-  debugger
-
-
-}
-
+  debugger;
+};
 
 // var phoneDigitsToLetters = {
 //   0: '0',
@@ -921,9 +550,6 @@ var telephoneWords = function (digitString) {
 //   return resultsArr;
 // }
 
-
-
-
 //   n = n || 3;
 // var accArr = [];
 
@@ -945,37 +571,6 @@ var telephoneWords = function (digitString) {
 
 //telephoneWords(2745);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // This question is asked by Amazon. Given a string representing the sequence of moves a robot vacuum makes, return whether or not it will return to its original position. The string will only contain L, R, U, and D characters, representing left, right, up, and down respectively.
 
 // Ex: Given the following strings...
@@ -984,34 +579,32 @@ var telephoneWords = function (digitString) {
 // "URURD", return false
 // "RUULLDRD", return true
 
-
 function robotVac(arr) {
-  debugger
-  arr = arr.split('')
+  debugger;
+  arr = arr.split('');
   var accObj = {};
 
   for (var i = 0; i < arr.length; i++) {
     accObj[arr[i]] = accObj[arr[i]] || 0;
-    accObj[arr[i]]++
+    accObj[arr[i]]++;
   }
   if (accObj['L'] === accObj['R'] && accObj['U'] === accObj['D']) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 
 function robotVac2(arr) {
   //debugger
-  var accObj = {}
+  var accObj = {};
 
   arr.split('').forEach(function (el) {
-    accObj[el] = accObj[el] || 0
-    accObj[el]++
-  })
-  return accObj
+    accObj[el] = accObj[el] || 0;
+    accObj[el]++;
+  });
+  return accObj;
 }
-
 
 // {
 // L : 4,
@@ -1023,9 +616,6 @@ function robotVac2(arr) {
 //robotVac(['LR')
 //robotVac("RUULLDRD")
 //console.log(robotVac2("URURD"))
-
-
-
 
 //the following functions act asynchronously
 /*
@@ -1086,29 +676,6 @@ firstNamePromise.then((firstName) => {
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Given an arbitrary input string, return the first nonrepeated character in
  * the string. For example:
@@ -1118,81 +685,67 @@ firstNamePromise.then((firstName) => {
  */
 
 var firstNonRepeatedCharacter = function (string) {
-
-  var copyStr = string
-  string = string.split('')
+  var copyStr = string;
+  string = string.split('');
   //copyStr = copyStr.split('')
-  var currentLetter
-
+  var currentLetter;
 
   while (string.length) {
-    currentLetter = string[0]
-    string.splice(0, 1)
+    currentLetter = string[0];
+    string.splice(0, 1);
     if (string.indexOf(currentLetter) > -1) {
       while (string.indexOf(currentLetter) > -1) {
-        string.splice(string.indexOf(currentLetter), 1)
+        string.splice(string.indexOf(currentLetter), 1);
       }
     } else {
-      return currentLetter
+      return currentLetter;
     }
-
   }
-  return null
+  return null;
 };
 
 //var teststr = 'someteststringz'
-var teststr = 'AACBDBC'
+var teststr = 'AACBDBC';
 //console.log(firstNonRepeatedCharacter(teststr))
 
-
-
-
-
-
-
-
-
-
-
-
 var isPrime = function (num, fc) {
-  debugger
+  debugger;
   //recursion
   //base case
   if (num === 1) {
-    return true
+    return true;
   }
 
   //var isP = true;
-  var isP = isPrime(num - 1,)
+  var isP = isPrime(num - 1);
   if (isP) {
-    return isP = fc % num !== 0
+    return (isP = fc % num !== 0);
   } else {
-    return isP = false
+    return (isP = false);
   }
-}
+};
 
 var issPrime = function (num) {
   //debugger
 
-  var isP = true
-  var ap = num
+  var isP = true;
+  var ap = num;
 
   function innerFucn(ap) {
     if (ap === 2) {
       return true;
     }
     if (isP) {
-      isP = num % (ap - 1) !== 0
+      isP = num % (ap - 1) !== 0;
     } else {
       isP = false;
     }
-    innerFucn(ap - 1)
+    innerFucn(ap - 1);
     //return isP
   }
-  innerFucn(ap)
-  return isP
-}
+  innerFucn(ap);
+  return isP;
+};
 
 /*
 for (var i = 9; i < 120; i++ ) {
@@ -1202,44 +755,31 @@ for (var i = 9; i < 120; i++ ) {
 
 var characterFreq = function (str) {
   //debugger
-  const accObj = {}
+  const accObj = {};
 
   str.split('').forEach(function (el) {
     if (accObj[el]) {
-      accObj[el]++
+      accObj[el]++;
     } else {
-      accObj[el] = 1
+      accObj[el] = 1;
     }
-  })
+  });
 
   var hi = 0;
-  var hiObj = {}
+  var hiObj = {};
   for (var key in accObj) {
     if (accObj[key] > hi) {
-      hi = accObj[key]
+      hi = accObj[key];
       hiObj = {
-        [key]: accObj[key]
-      }
+        [key]: accObj[key],
+      };
     }
   }
   return hiObj;
-}
+};
 
 var tttt = characterFreq('i am some string');
 //console.log(tttt)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // var mergeSort = function(array) {
 
@@ -1261,7 +801,6 @@ var tttt = characterFreq('i am some string');
 //   return merge(left, right);
 
 // };
-
 
 // //assume two arrays are sorted
 // //[1, 10, 50], [2, 14, 99, 100]
@@ -1292,34 +831,7 @@ var tttt = characterFreq('i am some string');
 //   return results;
 // }
 
-
 // console.log(mergeSort([10,24, 76, 73]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var insertionSort = function (arr) {
   //start by picking the second element in the array
@@ -1333,21 +845,16 @@ var insertionSort = function (arr) {
   for (i = 1; i < arr.length; i++) {
     currentVal = arr[i];
     for (j = i - 1; j >= 0 && arr[j].value > currentVal.value; j--) {
-      arr[j + 1] = arr[j]
-      console.log(arr)
+      arr[j + 1] = arr[j];
+      console.log(arr);
     }
-    arr[j + 1] = currentVal
+    arr[j + 1] = currentVal;
   }
-
 
   return arr;
 };
 
 //console.log(insertionSort([{value: 10}, {value: 5, order: 1}, {value: 5, order: 2}]))   //4
-
-
-
-
 
 // var currentVal;
 //   for (i = 1; i < arr.length; i++) {
@@ -1359,10 +866,7 @@ var insertionSort = function (arr) {
 //     arr[j+1] = currentVal
 //   }
 
-
 //     return arr;
-
-
 
 // function diamond(n) {
 
@@ -1384,25 +888,6 @@ var insertionSort = function (arr) {
 // var res = diamond(5)
 // console.log(res)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // var Horse = function(name) {
 //   this.name = name;
 
@@ -1412,13 +897,10 @@ var insertionSort = function (arr) {
 //   return this.name + ' is galloping to ' + destination + '!';
 // };
 
-
-
 // var FlyingHorse = function(name, color) {
 //   Horse.call(this, name);
 //   this.color = color;
 // };
-
 
 // FlyingHorse.prototype = Object.create(Horse.prototype);
 // FlyingHorse.prototype.constructor = FlyingHorse;
@@ -1426,7 +908,6 @@ var insertionSort = function (arr) {
 // // FlyingHorse.prototype.oldGoSomewhere = function (destination) {
 // //      Horse.prototype.goSomewhere.call(this, destination)
 // // }
-
 
 // FlyingHorse.prototype.oldGoSomewhere = Horse.prototype.goSomewhere
 // FlyingHorse.prototype.goSomewhere = function(destination, milesToDestination) {
@@ -1436,22 +917,6 @@ var insertionSort = function (arr) {
 //     return this.name + ' is flying to ' + destination + '!';
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // /**
 //  * Write a stack using your preferred instantiation pattern. Implement a min function
@@ -1521,7 +986,6 @@ var insertionSort = function (arr) {
 
 //   };
 
-
 //   var example = new Stack()
 //   console.log(example instanceof Stack)
 //   example.push(4)
@@ -1535,41 +999,25 @@ var insertionSort = function (arr) {
 //   example.pop()
 //   example.pop()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
-* Write a function that generates every sequence of throws a single
-* player could throw over a three-round game of rock-paper-scissors.
-*
-* Your output should look something like:
-*   ["RRR",
-*    "RRP",
-*    "RRS",
-*    "RPR",
-*    ...etc...
-*   ]
-*
-* Extra credit:
-*   - Make your function return answers for any number of rounds.
-*
-* Example:
-* rockPaperScissors(5); // => ['RRRRR', 'RRRRP', 'RRRRS', etc...]
-*
-*/
+ * Write a function that generates every sequence of throws a single
+ * player could throw over a three-round game of rock-paper-scissors.
+ *
+ * Your output should look something like:
+ *   ["RRR",
+ *    "RRP",
+ *    "RRS",
+ *    "RPR",
+ *    ...etc...
+ *   ]
+ *
+ * Extra credit:
+ *   - Make your function return answers for any number of rounds.
+ *
+ * Example:
+ * rockPaperScissors(5); // => ['RRRRR', 'RRRRP', 'RRRRS', etc...]
+ *
+ */
 
 /*
 var rockPaperScissors = function () {
@@ -1590,11 +1038,9 @@ var rps = ['R', 'P', 'S']
 //console.log(rockPaperScissors());
 */
 
-
 //Extra Credit Work
 
 var rockPaperScissors = function (n) {
-  debugger
   //recursion
   //I Number
   //O Array of combinations
@@ -1627,35 +1073,14 @@ var rockPaperScissors = function (n) {
       return;
     }
     ['R', 'P', 'S'].forEach(function (el) {
-      recFunc(str + el)
+      recFunc(str + el);
     });
-  }
-  recFunc()
+  };
+  recFunc();
   return accArr;
-}
-
-
+};
 
 //console.log(rockPaperScissors(3))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // //parent class Nut
 // class Nut {
