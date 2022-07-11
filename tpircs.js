@@ -1,70 +1,62 @@
 
 
-// public class PersonFullName
-//     {
-//         private string _given;
-//         private string _surname;
 
-//         public static PersonFullName Create(string given, string surname)
-//         {
-//             return new PersonFullName (given, surname);
-//         }
-//         private PersonFullName(string given, string surname)
-//         {
-//             _given = given;
-//             _surname = surname;
-//         }
-//         public string Given => _given;
-//         public string Surname => _surname;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+//  * @param {string[]} words
+//  * @return {string[]}
+//  */
+// var commonChars = function (words) {
+//   let accArr = [];
+
+//   let baseObj = {}
+
+//   for ( let i = 0; i < words[0].length; i++ ) {
+//     baseObj[words[0][i]] = (baseObj[words[0][i]] || 0) + 1
+//   }
+
+//   //base object complete
+//   // scan remaining words for matching letters
+
+//   for ( let letter in baseObj ) {
+//     console.log('letter =', letter, baseObj)
+//     for (let i = 1; i < words.length; i++ ) {
+//       if ( words[i].includes(letter) )
 //     }
+//   }
 
-//     public class Author
-//     {
-//         private Guid _id;
-//         private PersonFullName _name;
+//   // let obj = _.reduce(words[0],(acc, ea) => {
+//   //     acc[ea] = acc[ea] || 0;
+//   //     // acc[ea]++
+//   //     return acc;
+//   //   },
+//   //   {}
+//   // );
 
-//         public Author(string given, string surname)
-//         {
-//             _id = Guid.NewGuid();
-//             _name = PersonFullName.Create(given, surname);
 
-//         }
-//         public Guid Id => _id;
-//         public PersonFullName Name=>_name;
-
-//  public void FixAuthorName(string given, string surname)
-//         { _name = PersonFullName.Create(given, surname);
-//         }
-//     }
-
-/**
- * @param {string[]} words
- * @return {string[]}
- */
-var commonChars = function (words) {
-  let accArr = [];
-
-  let obj = _.reduce(
-    words[0],
-    (acc, ea) => {
-      acc[ea] = acc[ea] || 0;
-      // acc[ea]++
-      return acc;
-    },
-    {}
-  );
-  debugger;
-
-  for (let i = 1; i < words.length; i++) {}
-};
+// };
 
 // const words = ["bella","label","roller"]
 // commonChars(words)
 
 /*
 Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
-
-
+{ b: 1, e: 1, l: 2, a: 1 }
+{ b: 1, e: 1, l: 2, a: 1 }
+{ r: 2, e: 1, l: 2, o: 1 }
 
 Example 1:
 
@@ -119,8 +111,9 @@ const target = { ...source, z: 10 };
 //const newTarget = Object.assign(target, source)
 source.d = 4;
 //newTarget.f = 6
-console.log('target =', target);
-console.log('source =', source);
+
+// console.log('target =', target);
+// console.log('source =', source);
 
 //console.log('newTarget =', newTarget)
 
