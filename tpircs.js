@@ -1,5 +1,14 @@
+var revStr = function (str) {
+  let accStr = ''
 
+  for (let i = str.length - 1; i >= 0; i-- ) {
+    accStr += str[i]
+  }
 
+  return accStr;
+}
+
+console.log(revStr("Hello World !"))
 
 
 
