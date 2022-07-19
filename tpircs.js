@@ -1,14 +1,480 @@
-var revStr = function (str) {
-  let accStr = ''
+using System.Linq;
+using M220N.Models;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Driver;
+using NUnit.Framework;
 
-  for (let i = str.length - 1; i >= 0; i-- ) {
-    accStr += str[i]
-  }
+namespace M220NLessons
+{
+    public class Lookups
+    {
+        private IMongoCollection<Movie> _moviesCollection;
+        private IMongoCollection<Comment> _commentsCollection;
 
-  return accStr;
+        [SetUp]
+        public void Setup()
+        {
+            var camelCaseConvention = new ConventionPack { new CamelCaseElementNameConvention() };
+            ConventionRegistry.Register("CamelCase", camelCaseConvention, type => true);
+
+            var client = new MongoClient(Constants.MongoDbConnectionUri());
+            _moviesCollection = client.GetDatabase("sample_mflix").GetCollection<Movie>("movies");
+            _commentsCollection = client.GetDatabase("sample_mflix").GetCollection<Comment>("comments");
+        }
+
+        /*
+         *  Performing a Lookup with the Driver
+         *
+         *  Now that we have seen how we can use Compass to build and export an aggregation pipeline,
+         *  let’s take a look at how we use that code with the C# driver.
+         *  Here’s the code that Compass generated for us, wrapped in an
+         *  array of BsonDocuments:
+        */
+        [Test]
+        public void GetMovieWithCommentCount1()
+        {
+            var filter = new BsonDocument[]
+            {
+                new BsonDocument("$match",
+                    new BsonDocument("year",
+                        new BsonDocument
+                        {
+                            { "$gte", 1980 },
+                            { "$lt", 1990 }
+                        })),
+                new BsonDocument("$lookup",
+                new BsonDocument
+                    {
+                        { "from", "comments" },
+                        { "let", new BsonDocument("id", "$_id") },
+                        { "pipeline",
+                        new BsonArray
+                            {
+                                new BsonDocument("$match",
+                                new BsonDocument("$expr",
+                                new BsonDocument("$eq",
+                                new BsonArray
+                                {
+                                    "$movie_id",
+                                    "$$id"
+                                }))),
+                                new BsonDocument("$count", "count")
+                            }},
+                        { "as", "movie_comments" }
+                    })
+            };
+
+            /* We can then define that as a PipelineDefinition object,
+             * which we pass to the Aggregate() function on the Movies
+             * collection:
+             */
+
+            var pipeline = PipelineDefinition<Movie, BsonDocument>
+                .Create(filter);
+
+            var movies = _moviesCollection.Aggregate(pipeline).ToList();
+
+            var firstMovie = movies.First();
+
+            Assert.AreEqual(2081, movies.Count);
+            var comments = (BsonDocument)firstMovie.GetValue("movie_comments")[0];
+            var count = (int)comments.GetValue("count");
+            Assert.AreEqual(1, count);
+
+            /* And we can see that it works. But this code isn't exactly
+             * easy to debug or change, should we need to. As
+             * we've already discussed in this course, there are multiple ways
+             * to accomplish tasks with the driver, so let's look at an
+             * approach that makes more sense and is easy to decipher:
+             */
+        }
+
+
+        [Test]
+        public void GetMovieWithCommentCount2()
+        {
+            /* Now here is an approach that uses several helpful methods in the
+             * driver: Aggregate(), Match(), and Lookup(), each of which is
+             * represented in the code above as MQL. The Lookup() method is a bit
+             * complex; here is an explanation of each of the parameters:
+             *
+             *  - The collection from which we want to lookup the values
+             *      (in this case, the Comments collection)
+             *  - The "key" in the Movies collection that will match a key in
+             *      the Comments collection.
+             *  - The "key" in the Comments collection that matches the previous
+             *      parameter. In both cases, it's the _id of each Movie we match
+             *      in the Match state.
+             *  - The property in which we want to put the lookup results. We
+             *      have already defined a Comments property on the Movie object
+             *      for just this purpose, so we specify it here.
+             *
+             */
+            var movies = _moviesCollection
+                .Aggregate()
+                .Match(m => (int)m.Year < 1990 && (int)m.Year >= 1980)
+                .Lookup(
+                    _commentsCollection,
+                    m => m.Id,
+                    c => c.MovieId,
+                    (Movie m)=>m.Comments
+                    )
+                .ToList();
+
+            var firstMovie = movies.First();
+
+            Assert.AreEqual(2081, movies.Count);
+            Assert.AreEqual(1, firstMovie.Comments.Count);
+
+            /* As you can see, this code is much cleaner. If you are looking
+             * carefully, you may notice that we are casting the Year value
+             * to an integer. The reason for this will become clear near the
+             * end of the course when we do some bulk data changes.
+             */
+        }
+    }
 }
 
-console.log(revStr("Hello World !"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// A circle is defined by x-axis position, y-axis position, and a radius.
+// A circle group is a collection of circles that overlap.
+// Given a list of circles, figure out if they belong to a single circle group.
+// Formula for calculating distance between two points: sqrt((x2-x1)^2 + (y2-y1)^2)
+
+Input: list of circles [ [x1, y1, r], [ x2, y2, r ], [ x3, y3, r ] ....  ]
+Output: true/false for entire circle group
+Constraints: standard range of numbers, no negative radius
+Edge:
+
+
+var isCircleGroup = function ( arr ) {
+
+  //create results array
+
+  //iterate through the list of cirlces starting at position 0
+    //iterate through the list of circles comparing each circle
+      //if (current circle index is NOT base circle index)
+        //calculate hypotenuse between two points
+          //if radius 1 and radius 2 is greater than or equal to hypt
+             //check current cicle against results array
+               //if included
+                 //continue
+             //if i === j
+                //continue
+          //push both circles in results array
+          //break
+  // compare the length of results array with original array
+
+  let results = [];
+
+  for ( let i = 0; i < arr.length; i++ ) {
+    for ( let j = 0; j < arr.legnth; j++ ) {
+
+      const hypt = {sqrt((x2-x1)^2 + (y2-y1)^2)}
+
+      if (!results.includes(arr[i])) {
+
+        if (arr[i][2] + arr[j][2] >= hypt ) {
+          if (results.includes(arr[i]} || results.includes(arr[j])) {
+             continue;
+          }
+        if ( i === j ) {
+          continue;
+        }
+         results.push(arr[i], arr[j])
+          break;
+        }
+
+      }
+    }
+
+  }
+   return results.length === arr.length
+}
+
+
+[x1, x1, r]
+[x2, y2, r]x
+[x3, y3, r]x
+[x4, y4, r]o
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val)
+  this.left = (left === undefined ? null : left)
+  this.right = (right === undefined ? null : right)
+}
+//[5,1,2,3,null,6,4]
+let root = new TreeNode (5);
+root.left = new TreeNode(1);
+root.right = new TreeNode(2);
+root.left.left = new TreeNode(3);
+root.right.left = new TreeNode(6);
+root.right.right = new TreeNode(4);
+
+
+/**
+ * @param {TreeNode} root
+ * @param {number} startValue
+ * @param {number} destValue
+ * @return {string}
+ */
+ var getDirections = function(root, startValue, destValue) {
+
+
+
+};
+
+function findLCA (root, startValue, endValue) {
+  debugger
+
+  if ( root.val === startValue || root.val === endValue ) {
+    return root
+  }
+  const left = root.left && findLCA(root.left, startValue, endValue)
+  const right = root.right && findLCA(root.right, startValue, endValue)
+
+  if ( left && right ) {
+    return root
+  }
+  return left || right
+}
+//console.log(findLCA(root, 3, 6))
+
+
+//getDirections(root, 3, 6)
+
+
+/*
+You are given the root of a binary tree with n nodes. Each node is uniquely assigned a value from 1 to n. You are also given an integer startValue representing the value of the start node s, and a different integer destValue representing the value of the destination node t.
+
+Find the shortest path starting from node s and ending at node t. Generate step-by-step directions of such path as a string consisting of only the uppercase letters 'L', 'R', and 'U'. Each letter indicates a specific direction:
+
+'L' means to go from a node to its left child node.
+'R' means to go from a node to its right child node.
+'U' means to go from a node to its parent node.
+Return the step-by-step directions of the shortest path from node s to node t
+
+Input: root = [5,1,2,3,null,6,4], startValue = 3, destValue = 6
+Output: "UURL"
+Explanation: The shortest path is: 3 → 1 → 5 → 2 → 6.
+
+Input: root = [2,1], startValue = 2, destValue = 1
+Output: "L"
+Explanation: The shortest path is: 2 → 1.
+
+The number of nodes in the tree is n.
+2 <= n <= 105
+1 <= Node.val <= n
+All the values in the tree are unique.
+1 <= startValue, destValue <= n
+startValue != destValue
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//que stack
+// last in, first out
+
+//push onto stack
+//pop off of stack
+
+class Stack {
+  constructor() {
+    this._storage = {};
+    this._top = 0;
+  }
+  push(val) {
+    debugger;
+    this._storage[this._top++] = val;
+  }
+  pop(val) {
+    debugger;
+    if (this._top) {
+      delete this._storage[--this._top];
+    } else {
+      return null;
+    }
+  }
+  size() {
+    return Object.keys(this._storage).length
+  }
+}
+
+// var sss = new Stack();
+// console.log(sss);
+// sss.push(10);
+// sss.pop();
+// sss.pop();
+// sss.push(11);
+// sss.push(12);
+// sss.push(13);
+// sss.push(14);
+// sss.size()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,7 +516,6 @@ console.log(revStr("Hello World !"))
 //   //   },
 //   //   {}
 //   // );
-
 
 // };
 
