@@ -1,0 +1,1 @@
+alert('This is different js script\nHow this is written in the HTML src= is better practice')
